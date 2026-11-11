@@ -4,14 +4,16 @@ A fill-in HR portal in one HTML file. Answer seven setup steps about your organi
 
 It runs in the browser. There is no server and no account, and nothing you type leaves your computer.
 
+**Try it online:** [set up your portal](https://shehrozhanif.github.io/hr-portal-template/) · [see the sample company](https://shehrozhanif.github.io/hr-portal-template/preview.html)
+
 ## See it first
 
-Open `preview.html`. It shows the portal with a made-up sample company, so you can look around before you set anything up. Use **View as** at the top to switch between an employee and the HR people.
+Open `preview.html` ([online](https://shehrozhanif.github.io/hr-portal-template/preview.html)). It shows the portal with a made-up sample company, so you can look around before you set anything up. Use **View as** at the top to switch between an employee and the HR people.
 
 ## Use it
 
 1. Download this folder (the green **Code** button on GitHub, then **Download ZIP**), or clone it.
-2. Open `index.html` in a browser.
+2. Open `index.html` in a browser, or use the [online copy](https://shehrozhanif.github.io/hr-portal-template/).
 3. Go through the seven steps:
    1. **Organisation.** One company or a group of companies, and their names.
    2. **Working rules.** Grace minutes, the half-day limit, your currency and public holidays.
