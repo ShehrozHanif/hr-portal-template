@@ -1,0 +1,18 @@
+{
+  "name": "hr-portal-template",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A fill-in HR portal: answer seven setup steps and get the whole portal with your own companies, people and rules.",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node test/template.test.js",
+    "start": "node serve.mjs"
+  },
+  "devDependencies": {
+    "acorn": "^8.14.0",
+    "acorn-walk": "^8.3.4",
+    "jsdom": "^25.0.1"
+  }
+}

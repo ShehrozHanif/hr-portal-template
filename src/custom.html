@@ -1,0 +1,432 @@
+<!--CSS-->
+/* ---------- Template: Customise (pages, sections and weeks) ---------- */
+.cz-off { display: none !important; }
+#cz-scrim { position: fixed; inset: 0; background: rgba(6, 16, 20, .5); z-index: 300; }
+#cz { position: fixed; z-index: 301; top: 0; right: 0; bottom: 0; width: 520px; max-width: 100%; background: var(--sheet); color: var(--ink); box-shadow: var(--lift-2); display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; }
+#cz header { display: flex; align-items: center; gap: 12px; padding: 16px 18px 10px; padding-top: max(16px, env(safe-area-inset-top, 0px)); }
+#cz header h2 { margin: 0; font-size: 1.25rem; font-weight: 750; flex: 1; }
+#cz header h2:focus { outline: none; }
+#cz .check small { display: block; color: var(--muted); font-weight: 400; }
+.cz-field select { min-height: 44px; border: 1px solid var(--rule-2); border-radius: 10px; padding: 8px 12px; background: var(--sheet); color: var(--ink); font: inherit; }
+#cz .cz-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 18px 12px; border-bottom: 1px solid var(--rule); }
+#cz .cz-tabs button { all: unset; box-sizing: border-box; cursor: pointer; min-height: 40px; padding: 0 14px; border-radius: 99px; font-weight: 600; font-size: 0.875rem; color: var(--muted); display: inline-flex; align-items: center; }
+#cz .cz-tabs button[aria-selected="true"] { background: var(--dye-soft); color: var(--dye); }
+#cz .cz-tabs button:focus-visible { outline: 2px solid var(--dye); outline-offset: 2px; }
+#cz-body { overflow: auto; padding: 14px 18px 18px; display: grid; gap: 14px; align-content: start; }
+#cz-body p { margin: 0; color: var(--muted); font-size: 0.875rem; }
+#cz footer { padding: 12px 18px; padding-bottom: max(12px, env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+#cz footer .sp { flex: 1; }
+.cz-grp { font-size: 0.8125rem; font-weight: 700; color: var(--muted); margin: 6px 0 -4px; }
+.cz-page { border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.cz-page.is-off { background: var(--wash); }
+.cz-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 12px; }
+.cz-row + .cz-row, .cz-secs { border-top: 1px solid var(--rule); }
+.cz-row input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--sb); }
+.cz-row input[type="text"] { width: 100%; min-height: 40px; border: 1px solid var(--rule-2); border-radius: 8px; padding: 6px 10px; background: var(--sheet); color: var(--ink); font: inherit; }
+.cz-row input[type="text"]:focus { outline: none; border-color: var(--dye); box-shadow: 0 0 0 3px rgba(42, 91, 214, .2); }
+.cz-row .cz-tools { display: flex; gap: 4px; align-items: center; }
+.cz-ic { all: unset; box-sizing: border-box; width: 36px; height: 36px; display: inline-grid; place-items: center; border-radius: 8px; cursor: pointer; color: var(--muted); border: 1px solid var(--rule); }
+.cz-ic:hover { color: var(--ink); border-color: var(--rule-2); }
+.cz-ic:focus-visible { outline: 2px solid var(--dye); outline-offset: 2px; }
+.cz-ic[disabled] { opacity: .35; cursor: default; }
+.cz-secs summary { cursor: pointer; padding: 8px 12px; font-size: 0.8125rem; font-weight: 600; color: var(--muted); min-height: 36px; display: flex; align-items: center; }
+.cz-secs .cz-row { padding-left: 24px; background: var(--wash); }
+.cz-wk { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 12px; }
+.cz-wk.is-off { background: var(--wash); }
+.cz-wk .cz-wk-h { font-weight: 650; }
+.cz-wk .cz-wk-h small { font-weight: 400; color: var(--muted); margin-left: 6px; }
+.cz-wk input[type="text"] { grid-column: 1 / -1; min-height: 40px; border: 1px solid var(--rule-2); border-radius: 8px; padding: 6px 10px; background: var(--sheet); color: var(--ink); font: inherit; width: 100%; }
+.cz-wk .check { min-height: 36px; grid-column: 1 / -1; font-weight: 500; }
+.cz-field { display: grid; gap: 6px; max-width: 260px; }
+.cz-field label { font-weight: 600; font-size: 0.875rem; }
+.cz-field input { min-height: 44px; border: 1px solid var(--rule-2); border-radius: 10px; padding: 8px 12px; background: var(--sheet); color: var(--ink); font: inherit; }
+.cz-count { font-size: 0.8125rem; color: var(--muted); }
+.wkskip { display: block; font-size: 0.6875rem; font-weight: 600; color: var(--warn); }
+.cz-h3 { margin: 10px 0 -4px; font-size: 1rem; font-weight: 750; }
+.cz-h3:focus { outline: none; }
+.cz-li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 10px; align-items: center; padding: 8px 12px; border: 1px solid var(--rule); border-radius: 12px; }
+.cz-li.is-off { background: var(--wash); }
+.cz-li.add { border-style: dashed; }
+.cz-li input[type="text"] { min-height: 40px; border: 1px solid var(--rule-2); border-radius: 8px; padding: 6px 10px; background: var(--sheet); color: var(--ink); font: inherit; width: 100%; }
+.cz-li input[type="text"]:focus { outline: none; border-color: var(--dye); box-shadow: 0 0 0 3px rgba(42, 91, 214, .2); }
+.cz-li > input + input.cz-num, .cz-li > input.cz-num { grid-column: 1; max-width: 120px; }
+.cz-li small { display: block; color: var(--muted); font-size: 0.8125rem; grid-column: 1; }
+.cz-li b { font-weight: 650; }
+.cz-li .cz-tools { grid-column: 2; grid-row: 1; }
+#cz-body p.su-err, #cz-body p.su-ok { font-size: 0.875rem; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+#cz-body p.su-err { color: var(--bad); } #cz-body p.su-ok { color: var(--ok); }
+<!--HTML-->
+<div id="cz-scrim" hidden></div>
+<aside id="cz" role="dialog" aria-modal="true" aria-labelledby="cz-h" hidden>
+  <header><h2 id="cz-h" tabindex="-1">Customise this portal</h2><button type="button" class="cz-ic" id="cz-x" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12"/></svg></button></header>
+  <div class="cz-tabs" role="tablist" aria-label="What to customise"><button type="button" role="tab" id="cz-t-pages" aria-selected="true" data-cztab="pages">Pages and sections</button><button type="button" role="tab" id="cz-t-weeks" aria-selected="false" data-cztab="weeks">Weeks</button><button type="button" role="tab" id="cz-t-lists" aria-selected="false" data-cztab="lists">Lists</button><button type="button" role="tab" id="cz-t-rules" aria-selected="false" data-cztab="rules">Rules</button></div>
+  <div id="cz-body"></div>
+  <footer><span class="cz-count" id="cz-count" role="status"></span><span class="sp"></span><button type="button" class="btn small danger" id="cz-reset">Undo all changes</button><button type="button" class="btn small primary" id="cz-done">Done</button></footer>
+</aside>
+<!--JS-->
+<script>
+/* Customise: HR and the owner can hide, rename and reorder pages and sections, and shape the weeks.
+   Everything is kept in this browser and can be undone. Nothing is deleted from the record: a hidden page or a
+   skipped week keeps its data and can be brought back. */
+(function () {
+  "use strict";
+  var TPL = window.TPL; if (!TPL) return;
+  var PFX = window.TPLSetup.preview ? "hr-template-preview-" : "hr-template-", CKEY = PFX + "custom-v1", CUR = 7, Q_START = "2026-09-28", MAX_WEEK = 13, HOME = { "my-week": 1, hr: 1 };
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function clean(s, max) { return String(s == null ? "" : s).replace(/[<>&"`\\]/g, " ").replace(/\s+/g, " ").trim().slice(0, max || 40); }
+  function blank() { return { pages: {}, secs: {}, order: {}, weeks: { word: "", names: {}, skip: {}, extra: 0 }, leave: { names: {}, extra: [] }, rules: { shift: 600, off: [] } }; }
+  function load() { try { var c = JSON.parse(window.localStorage.getItem(CKEY) || "null"); if (c && c.pages && c.secs && c.weeks) { c.order = c.order || {}; c.rules = c.rules || {}; c.rules.shift = Number(c.rules.shift) >= 360 && Number(c.rules.shift) <= 840 ? Number(c.rules.shift) : 600; c.rules.off = (Array.isArray(c.rules.off) ? c.rules.off : []).filter(function (d) { return [1, 3, 4, 5, 6].indexOf(d) >= 0; }); c.leave = c.leave || { names: {}, extra: [] }; c.leave.names = c.leave.names || {}; c.leave.extra = Array.isArray(c.leave.extra) ? c.leave.extra : []; c.weeks.names = c.weeks.names || {}; c.weeks.skip = c.weeks.skip || {}; c.weeks.extra = Math.max(0, Math.min(MAX_WEEK - CUR, Number(c.weeks.extra) || 0)); return c; } } catch (e) { /* storage blocked */ } return blank(); }
+  function save() { try { window.localStorage.setItem(CKEY, JSON.stringify(C)); } catch (e) { /* storage blocked */ } }
+  var C = load(), modOff = {}; Object.keys(TPL.off).forEach(function (r) { modOff[r] = 1; });
+  var DAYN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function addDays(iso, n) { return new Date(Date.parse(iso + "T00:00:00Z") + n * 864e5).toISOString().slice(0, 10); }
+  function dlab(iso) { var d = new Date(iso + "T00:00:00Z"); return DAYN[d.getUTCDay()] + " " + d.getUTCDate() + " " + MON[d.getUTCMonth()]; }
+  function wkStart(n) { return addDays(Q_START, (n - 1) * 7); }
+  function word() { return C.weeks.word || "Week"; }
+  function wkName(n, short) { var nm = C.weeks.names[n]; if (nm) return nm; var w = word(); if (short) w = w === "Week" ? "Wk" : w.length > 6 ? w.slice(0, 3) : w; return w + " " + n; }
+
+  /* ---------- What the portal engine asks ---------- */
+  TPL.wkExtra = function () { return C.weeks.extra; };
+  TPL.wkUp = function () { var out = []; for (var i = 1; i <= C.weeks.extra; i++) out.push("Week " + (CUR + i)); return out; };
+  TPL.wkCells = function () { var out = []; for (var i = 1; i <= C.weeks.extra; i++) out.push({ cls: "c-wait", text: "", sr: "Week " + (CUR + i) + ": not started" }); return out; };
+  TPL.wkSkipped = function (n) { return !!C.weeks.skip[n]; };
+  TPL.wkState = function (n, now) { return now ? "This week" : n > CUR ? "Upcoming, not started" : C.weeks.skip[n] ? "Skipped, not counted" : "Closed, checked"; };
+  TPL.offDay = function (dow) { return C.rules.off.indexOf(dow) >= 0; };
+  function delta() { return C.rules.shift - 600; }
+  var T_RE = /\b(\d{1,2}):(\d{2})( ?)(AM|PM)\b/g;
+  function timeText(src) { var d = delta(); return src.replace(T_RE, function (m, h, mm, sp, ap) { var t = (Number(h) % 12) * 60 + Number(mm) + (ap === "PM" ? 720 : 0) + d; t = ((t % 1440) + 1440) % 1440; var H = Math.floor(t / 60); return (H % 12 || 12) + ":" + ("0" + (t % 60)).slice(-2) + sp + (H >= 12 ? "PM" : "AM"); }); }
+  /* Example attendance of other people: the days that are now days off come out of the days worked. */
+  TPL.exAtt = function (a, month) {
+    if (!a || !C.rules.off.length) return a;
+    var n = 0, end = month === "2026-11" ? "2026-11-10" : addDays(addDays(month + "-28", 4).slice(0, 8) + "01", -1);
+    for (var d = month + "-01"; d <= end; d = addDays(d, 1)) if (C.rules.off.indexOf(new Date(d + "T00:00:00Z").getUTCDay()) >= 0) n++;
+    return [Math.max(0, a[0] - n), a[1], a[2], a[3], a[4]];
+  };
+  TPL.pageName = function (r, orig) { return (C.pages[r] && C.pages[r].name) || orig; };
+
+  /* ---------- Applying the choices to the page ---------- */
+  var style = document.createElement("style"); style.id = "cz-style"; document.head.appendChild(style);
+  function isHR() { var v = TPL.viewers[$("#viewas").value]; return !!v && v.role === "HR"; }
+  function orig(el) { if (!el.hasAttribute("data-cz-orig")) el.setAttribute("data-cz-orig", el.textContent.replace(/\s+/g, " ").trim()); return el.getAttribute("data-cz-orig"); }
+  function ownText(el) { for (var n = el.firstChild; n; n = n.nextSibling) if (n.nodeType === 3 && n.nodeValue.trim()) return n; return null; }
+  function setLabel(el, name) { var t = ownText(el); if (!t) return; if (!el.hasAttribute("data-cz-orig")) el.setAttribute("data-cz-orig", t.nodeValue.trim()); var want = name || el.getAttribute("data-cz-orig"); if (t.nodeValue.trim() !== want) t.nodeValue = want; }
+  function pageRoutes() { var seen = {}, out = []; [["#nav-emp", "Employee pages"], ["#nav-hrl", "HR pages"]].forEach(function (g) { $$(g[0] + " [data-route]").forEach(function (a) { var r = a.getAttribute("data-route"); if (seen[r] || modOff[r]) return; seen[r] = 1; out.push({ route: r, group: g[1], link: a }); }); }); return out; }
+  function secsOf(route) { var pg = $('.page[data-page="' + route + '"]'); if (!pg) return []; return $$("section[aria-labelledby]", pg).map(function (s) { var id = s.getAttribute("aria-labelledby"), h = document.getElementById(id); return h && /^H[23]$/.test(h.nodeName) && s.contains(h) ? { id: id, el: s, h: h } : null; }).filter(Boolean); }
+  var W_RE = /\b(Week|week|Wk|wk) (\d{1,2})\b/g, L_RE = /\b(Casual|casual|Annual|annual|Sick|sick)\b/g;
+  function leaveText(src) { return src.replace(L_RE, function (m) { var nm = C.leave.names[m.toLowerCase()]; if (!nm) return m; return /^[A-Z]/.test(m) ? nm : nm.charAt(0).toLowerCase() + nm.slice(1); }); }
+  function weekText(src) { return src.replace(W_RE, function (m, w, d) { var n = Number(d); if (n < 1 || n > MAX_WEEK) return m; var out = wkName(n, w === "Wk" || w === "wk"); return C.weeks.names[n] || /^[A-Z]/.test(w) ? out : out.charAt(0).toLowerCase() + out.slice(1); }); }
+  function weekPass(force) {
+    var skipA = $("#setup"), skipB = $("#cz"), w = document.createTreeWalker(document.body, 4, null), n;
+    var wkOn = !!(C.weeks.word || Object.keys(C.weeks.names).length), lvOn = Object.keys(C.leave.names).length > 0, tmOn = delta() !== 0, custom = wkOn || lvOn || tmOn;
+    var fix = function (src) { if (wkOn) src = weekText(src); if (lvOn) src = leaveText(src); if (tmOn) src = timeText(src); return src; };
+    while ((n = w.nextNode())) {
+      var p = n.parentNode; if (!p || /^(SCRIPT|STYLE|TEXTAREA)$/.test(p.nodeName) || skipA.contains(n) || skipB.contains(n)) continue;
+      if (n.__czOut !== undefined && n.nodeValue === n.__czOut) { if (!force) continue; } else { n.__czSrc = n.nodeValue; }
+      if (!custom && n.__czOut === undefined) continue;
+      var out = custom ? fix(n.__czSrc) : n.__czSrc; n.__czOut = out; if (n.nodeValue !== out) n.nodeValue = out;
+    }
+    $$("[aria-label]").forEach(function (el) { if (skipA.contains(el) || skipB.contains(el)) return; var a = el.getAttribute("aria-label"); if (el.__czA !== undefined && a === el.__czA && !force) return; if (!(el.__czA !== undefined && a === el.__czA)) el.__czAS = a; var o = custom ? fix(el.__czAS) : el.__czAS; el.__czA = o; if (a !== o) el.setAttribute("aria-label", o); });
+  }
+  var ORIG = {};
+  function reorder(route) {
+    if (!ORIG[route]) ORIG[route] = secsOf(route).map(function (s) { return s.id; });
+    var want = C.order[route] || ORIG[route]; if (!want || !want.length) return;
+    var byParent = [];
+    secsOf(route).forEach(function (s) { var g = byParent.filter(function (x) { return x.parent === s.el.parentNode; })[0]; if (!g) byParent.push(g = { parent: s.el.parentNode, list: [] }); g.list.push(s); });
+    byParent.forEach(function (g) {
+      var ids = g.list.map(function (s) { return s.id; }), target = want.filter(function (id) { return ids.indexOf(id) >= 0; }).concat(ids.filter(function (id) { return want.indexOf(id) < 0; }));
+      if (target.join() === ids.join()) return;
+      var marks = g.list.map(function (s) { var m = document.createComment("cz"); g.parent.insertBefore(m, s.el); return m; });
+      target.forEach(function (id, i) { var s = g.list.filter(function (x) { return x.id === id; })[0]; g.parent.insertBefore(s.el, marks[i]); });
+      marks.forEach(function (m) { g.parent.removeChild(m); });
+    });
+  }
+  var applying = false, obs = null;
+  function apply(force) {
+    if (applying) return; applying = true; if (obs) obs.disconnect();
+    try {
+      Object.keys(TPL.off).forEach(function (r) { if (!modOff[r]) delete TPL.off[r]; });
+      pageRoutes().forEach(function (p) {
+        var c = C.pages[p.route] || {}, hide = !!c.hide && !HOME[p.route];
+        if (hide) TPL.off[p.route] = 1;
+        $$('.nav [data-route="' + p.route + '"], .tabs-bottom [data-route="' + p.route + '"]').forEach(function (a) { a.classList.toggle("cz-off", hide); setLabel(a, c.name); });
+        $$('.page a[href="#' + p.route + '"], .page [data-route="' + p.route + '"]').forEach(function (a) { a.classList.toggle("cz-off", hide); });
+        var h1 = $('.page[data-page="' + p.route + '"] h1'); if (h1) setLabel(h1, c.name);
+        secsOf(p.route).forEach(function (s) { var sc = C.secs[s.id] || {}; s.el.classList.toggle("cz-off", !!sc.hide); setLabel(s.h, sc.name); });
+        reorder(p.route);
+      });
+      var open = $$(".page").filter(function (pg) { return !pg.hidden; })[0], r = open && open.getAttribute("data-page");
+      if (r && TPL.off[r] && !modOff[r]) { try { window.location.hash = isHR() ? "hr" : "my-week"; } catch (e) { /* hash blocked */ } }
+      else if (r && C.pages[r] && C.pages[r].name && $("#top-title").textContent !== C.pages[r].name) $("#top-title").textContent = C.pages[r].name;
+      style.textContent = Object.keys(C.weeks.skip).map(function (n) { return "#mx tr > :nth-child(" + (Number(n) + 1) + ") { display: none; }"; }).join("\n");
+      if (TPL.eng) { if (applyLeave() && TPL.redraw) TPL.redraw(); syncPeople(); }
+      var setH = $("#set-l-h"), note = $("#cz-set-extra");
+      if (setH && C.leave.extra.length) { var say = "Added in Customise: " + C.leave.extra.map(function (x) { return x.name + ", " + x.days + (x.days === 1 ? " day" : " days"); }).join("; ") + ". Change them in Customise, Lists."; if (!note) { note = document.createElement("p"); note.id = "cz-set-extra"; note.className = "notes"; note.style.margin = "0"; setH.parentNode.appendChild(note); } if (note.textContent !== say) note.textContent = say; }
+      else if (note) note.parentNode.removeChild(note);
+      weekPass(force); timeInputs(true);
+      var b = $("#cz-btn"); if (b) b.hidden = !isHR();
+    } finally { applying = false; if (obs) obs.observe(document.body, { childList: true, subtree: true, characterData: true }); }
+  }
+
+  /* ---------- The Customise panel ---------- */
+  var tab = "pages", sure = false;
+  $(".topbar #theme-btn").insertAdjacentHTML("beforebegin", '<button class="iconbtn" id="cz-btn" aria-haspopup="dialog" aria-label="Customise this portal" title="Customise" hidden><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3.5 16.5l.8-3.6L13.6 3.6a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L7.1 15.7z"/><path d="M12 5.2l2.8 2.8"/></svg></button>');
+  function hiddenCount() { var n = 0; Object.keys(C.pages).forEach(function (r) { if (C.pages[r].hide && !modOff[r] && !HOME[r]) n++; }); Object.keys(C.secs).forEach(function (s) { if (C.secs[s].hide) n++; }); n += Object.keys(C.weeks.skip).length; return n; }
+  function count() { var n = hiddenCount(); $("#cz-count").textContent = n ? n + (n === 1 ? " thing is hidden or skipped" : " things are hidden or skipped") : "Nothing is hidden"; }
+  var UP = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8l4-4 4 4"/></svg>', DOWN = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>';
+  function pagesHtml() {
+    var grp = "", h = "<p>Untick a page or a section to hide it. Type a new name to rename it; clear the box to get the original back. The arrows move a section up or down its page.</p>";
+    pageRoutes().forEach(function (p) {
+      var c = C.pages[p.route] || {}, on = !c.hide || HOME[p.route], name = orig(p.link.cloneNode(true)) && (p.link.getAttribute("data-cz-orig") || (ownText(p.link) || {}).nodeValue || p.route);
+      name = String(name).trim();
+      if (p.group !== grp) { grp = p.group; h += '<div class="cz-grp">' + grp + "</div>"; }
+      var secs = secsOf(p.route), lists = {};
+      secs.forEach(function (s) { var k = secs.filter(function (x) { return x.el.parentNode === s.el.parentNode; }); lists[s.id] = k; });
+      h += '<div class="cz-page' + (on ? "" : " is-off") + '" data-czpage="' + p.route + '"><div class="cz-row"><input type="checkbox" id="cz-p-' + p.route + '" data-czshow="page" data-id="' + p.route + '"' + (on ? " checked" : "") + (HOME[p.route] ? " disabled" : "") + ' aria-label="Show the page ' + esc(name) + '"><input type="text" data-czname="page" data-id="' + p.route + '" value="' + esc(c.name || "") + '" placeholder="' + esc(name) + '" aria-label="Name of the page ' + esc(name) + '" maxlength="40"><span class="cz-count">' + (HOME[p.route] ? "Home page" : on ? "Shown" : "Hidden") + "</span></div>" +
+        (secs.length ? '<details class="cz-secs"' + (secs.some(function (s) { return C.secs[s.id]; }) ? " open" : "") + "><summary>" + secs.length + " section" + (secs.length === 1 ? "" : "s") + "</summary>" + secs.map(function (s) {
+          var sc = C.secs[s.id] || {}, o = orig(s.h) && s.h.getAttribute("data-cz-orig"), sib = lists[s.id], at = sib.indexOf(s);
+          return '<div class="cz-row" data-czsec="' + s.id + '"><input type="checkbox" data-czshow="sec" data-id="' + s.id + '"' + (sc.hide ? "" : " checked") + ' aria-label="Show the section ' + esc(o) + '"><input type="text" data-czname="sec" data-id="' + s.id + '" value="' + esc(sc.name || "") + '" placeholder="' + esc(o) + '" aria-label="Name of the section ' + esc(o) + '" maxlength="40"><span class="cz-tools"><button type="button" class="cz-ic" data-czmove="-1" data-id="' + s.id + '" data-czr="' + p.route + '" aria-label="Move ' + esc(o) + ' up"' + (at <= 0 ? " disabled" : "") + ">" + UP + '</button><button type="button" class="cz-ic" data-czmove="1" data-id="' + s.id + '" data-czr="' + p.route + '" aria-label="Move ' + esc(o) + ' down"' + (at >= sib.length - 1 ? " disabled" : "") + ">" + DOWN + "</button></span></div>";
+        }).join("") + "</details>" : "") + "</div>";
+    });
+    return h;
+  }
+  function weeksHtml() {
+    var total = CUR + C.weeks.extra, h = "<p>Rename the weeks, leave a past week out of the count, or plan the weeks ahead. A skipped week keeps its readings and can be counted again at any time.</p>" +
+      '<div class="cz-field"><label for="cz-word">What a week is called</label><input id="cz-word" value="' + esc(C.weeks.word) + '" placeholder="Week" maxlength="12"></div>';
+    for (var n = 1; n <= total; n++) {
+      var skip = !!C.weeks.skip[n], st = n === CUR ? "This week" : n > CUR ? "Upcoming" : skip ? "Skipped" : "Checked";
+      h += '<div class="cz-wk' + (skip ? " is-off" : "") + '" data-czwk="' + n + '"><span class="cz-wk-h">' + esc(word()) + " " + n + "<small>" + dlab(wkStart(n)).slice(4) + " to " + dlab(addDays(wkStart(n), 6)).slice(4) + '</small></span><span class="badge ' + (n === CUR ? "b-dye" : n > CUR ? "b-mute" : skip ? "b-warn" : "b-ok") + '">' + st + "</span>" +
+        '<input type="text" data-czwkname="' + n + '" value="' + esc(C.weeks.names[n] || "") + '" placeholder="Its own name, e.g. Launch week" aria-label="Own name for week ' + n + '" maxlength="24">' +
+        (n < CUR ? '<label class="check"><input type="checkbox" data-czwkcount="' + n + '"' + (skip ? "" : " checked") + "><span>Count this week</span></label>" : "") +
+        (n > CUR && n === total ? '<div style="grid-column:1/-1"><button type="button" class="btn small danger" data-czwkdel="' + n + '">Delete this week</button></div>' : "") + "</div>";
+    }
+    h += '<div><button type="button" class="btn small" id="cz-addwk"' + (total >= MAX_WEEK ? " disabled" : "") + ">Add a week</button> <span class=\"cz-count\">" + (total >= MAX_WEEK ? "A quarter has " + MAX_WEEK + " weeks." : "The next one starts " + dlab(wkStart(total + 1)) + ".") + "</span></div>" +
+      "<p>This week can't be skipped, and a week with readings is never deleted: skip it instead.</p>";
+    return h;
+  }
+  function draw(keep) {
+    var f = keep && document.activeElement, sel = f && f.getAttribute ? ["data-czshow", "data-czname", "data-czmove", "data-czwkname", "data-czwkcount", "data-czwkdel", "data-czoff"].map(function (a) { return f.hasAttribute(a) ? "[" + a + '="' + f.getAttribute(a) + '"]' + (f.hasAttribute("data-id") ? '[data-id="' + f.getAttribute("data-id") + '"]' : "") : ""; }).join("") : "", fid = f && f.id;
+    $$("[data-cztab]").forEach(function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-cztab") === tab)); });
+    $("#cz-body").innerHTML = tab === "pages" ? pagesHtml() : tab === "weeks" ? weeksHtml() : tab === "lists" ? listsHtml() : rulesHtml();
+    sure = false; $("#cz-reset").textContent = "Undo all changes"; count();
+    if (keep) { var back = (fid && document.getElementById(fid)) || (sel && $("#cz-body " + sel)); if (back && !back.disabled) back.focus(); else $("#cz-h").focus(); }
+  }
+  function change(redrawEngine) { save(); if (redrawEngine && TPL.redraw) TPL.redraw(); apply(true); }
+  function openCz() { if (!isHR()) return; $("#cz-scrim").hidden = false; $("#cz").hidden = false; draw(false); $("#cz-h").focus(); }
+  function closeCz() { if ($("#cz").hidden) return; put(UKEY, null); $("#cz-scrim").hidden = true; $("#cz").hidden = true; var b = $("#cz-btn"); if (b && !b.hidden) b.focus(); }
+  $("#cz-btn").addEventListener("click", openCz);
+  $("#cz-x").addEventListener("click", closeCz); $("#cz-done").addEventListener("click", closeCz); $("#cz-scrim").addEventListener("click", closeCz);
+  $("#cz").addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { e.stopPropagation(); closeCz(); return; }
+    if (e.key !== "Tab") return;
+    var f = $$("#cz button:not([disabled]), #cz input:not([disabled]), #cz summary, #cz [tabindex]").filter(function (n) { return n.offsetParent !== null || n === document.activeElement; });
+    if (!f.length) return; var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  $("#cz").addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("button") : null; if (!t) return;
+    if (t.hasAttribute("data-cztab")) { tab = t.getAttribute("data-cztab"); draw(false); $("#cz-t-" + tab).focus(); return; }
+    if (t.hasAttribute("data-czmove")) {
+      var route = t.getAttribute("data-czr"), id = t.getAttribute("data-id"), dir = Number(t.getAttribute("data-czmove"));
+      var all = secsOf(route), me = all.filter(function (s) { return s.id === id; })[0], sib = all.filter(function (s) { return s.el.parentNode === me.el.parentNode; }), at = sib.indexOf(me), to = at + dir;
+      if (to < 0 || to >= sib.length) return;
+      var ids = all.map(function (s) { return s.id; }), a = ids.indexOf(id), b = ids.indexOf(sib[to].id); ids[a] = sib[to].id; ids[b] = id;
+      C.order[route] = ids; change(false); draw(true);
+      var again = $('#cz-body [data-czmove="' + dir + '"][data-id="' + id + '"]'); if (again && !again.disabled) again.focus(); else { var other = $('#cz-body [data-czmove="' + -dir + '"][data-id="' + id + '"]'); if (other) other.focus(); }
+      return;
+    }
+    if (t.id === "cz-addwk") { if (CUR + C.weeks.extra >= MAX_WEEK) return; C.weeks.extra++; change(true); draw(false); var nb = $("#cz-addwk"); (nb.disabled ? $("#cz-h") : nb).focus(); return; }
+    if (t.hasAttribute("data-czwkdel")) { var n = Number(t.getAttribute("data-czwkdel")); if (n !== CUR + C.weeks.extra) return; delete C.weeks.names[n]; C.weeks.extra--; change(true); draw(false); $("#cz-addwk").focus(); return; }
+    if (t.id === "cz-reset") {
+      if (!sure) { sure = true; t.textContent = "Undo everything? Yes"; return; }
+      /* A leave type that already has requests stays: its requests need it. */
+      var keepX = C.leave.extra.filter(function (x) { return leaveUse(x.key) > 0; });
+      C = blank(); C.leave.extra = keepX; change(true); draw(false); $("#cz-h").focus();
+    }
+  });
+  $("#cz").addEventListener("change", function (e) {
+    var t = e.target, id = t.getAttribute("data-id");
+    if (t.hasAttribute("data-czshow")) { var store = t.getAttribute("data-czshow") === "page" ? C.pages : C.secs; store[id] = store[id] || {}; store[id].hide = !t.checked; if (!store[id].hide && !store[id].name) delete store[id]; change(false); draw(true); }
+    else if (t.hasAttribute("data-czwkcount")) { var n = t.getAttribute("data-czwkcount"); if (t.checked) delete C.weeks.skip[n]; else C.weeks.skip[n] = 1; change(true); draw(true); }
+  });
+  $("#cz").addEventListener("input", function (e) {
+    var t = e.target, id = t.getAttribute("data-id");
+    if (t.hasAttribute("data-czname")) { var store = t.getAttribute("data-czname") === "page" ? C.pages : C.secs, v = clean(t.value); store[id] = store[id] || {}; if (v) store[id].name = v; else delete store[id].name; if (!store[id].hide && !store[id].name) delete store[id]; change(false); }
+    else if (t.id === "cz-word") { C.weeks.word = clean(t.value, 12).replace(/[0-9]/g, ""); change(false); $$("#cz-body .cz-wk-h").forEach(function (h, i) { h.firstChild.nodeValue = word() + " " + (i + 1); }); }
+    else if (t.hasAttribute("data-czwkname")) { var n = t.getAttribute("data-czwkname"), nm = clean(t.value, 24); if (nm) C.weeks.names[n] = nm; else delete C.weeks.names[n]; change(false); }
+  });
+
+  /* ---------- Lists: companies, people, targets and leave types ----------
+     Companies and people belong to the setup, so a change there saves the setup and loads the portal again.
+     Every delete keeps a copy of what was there, so Undo can put it back. */
+  var UKEY = PFX + "undo-v1", OKEY = PFX + "reopen-v1", SK = window.TPLSetup.key, BASE_L = null, listMsg = "";
+  function raw(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
+  function put(k, v) { try { if (v == null) window.localStorage.removeItem(k); else window.localStorage.setItem(k, v); } catch (e) { /* storage blocked */ } }
+  function eng() { return TPL.eng; }
+  function cfgCopy() { return JSON.parse(JSON.stringify(TPL.cfg)); }
+  function backup(what) { eng().save(); put(UKEY, JSON.stringify({ what: what, setup: raw(SK), data: raw(TPL.dataKey), custom: raw(CKEY) })); }
+  function undoInfo() { try { return JSON.parse(raw(UKEY) || "null"); } catch (e) { return null; } }
+  function reopen(msg) { put(OKEY, JSON.stringify({ viewer: $("#viewas").value, msg: msg || "" })); window.TPLSetup.reload(); }
+  function saveSetup(next, dataFn, msg) { eng().save(); if (dataFn) { var d = raw(TPL.dataKey); if (d) put(TPL.dataKey, dataFn(d)); } put(SK, JSON.stringify(next)); reopen(msg); }
+  function swapText(a, b) { return function (d) { return a.length >= 4 && a !== b ? d.split(a).join(b) : d; }; }
+  function coreRole(code) { var c = TPL.cfg, v = TPL.viewers[code]; if (code === c.focus) return "Example employee"; var p = c.people.filter(function (x) { return x.code === code; })[0]; if (p && p.role === "owner") return "Owner"; if (v) return "HR in View as"; return ""; }
+  function coUse(key) { var S = eng().S(), n = function (list) { return (list || []).filter(function (x) { return x.co === key; }).length; }; return { people: n(S.people), jobs: n(S.rec && S.rec.jobs) + n(S.rec && S.rec.reqs), pol: n(S.pol) }; }
+  function applyLeave() {
+    var L = eng().LTYPES, S = eng().S(), changed = false;
+    if (!BASE_L) { BASE_L = {}; Object.keys(L).forEach(function (k) { BASE_L[k] = L[k]; }); }
+    Object.keys(BASE_L).forEach(function (k) { var want = C.leave.names[k] || BASE_L[k]; if (L[k] !== want) { L[k] = want; changed = true; } });
+    var keep = {}; C.leave.extra.forEach(function (x) { keep[x.key] = 1; if (L[x.key] !== x.name) { L[x.key] = x.name; changed = true; } if (S.set.ent[x.key] !== x.days) { S.set.ent[x.key] = x.days; changed = true; } });
+    Object.keys(L).forEach(function (k) { if (!BASE_L[k] && !keep[k]) { delete L[k]; delete S.set.ent[k]; changed = true; } });
+    return changed;
+  }
+  function leaveUse(key) { var S = eng().S(); return S.leave.filter(function (l) { return l.type === key; }).length + ((S.hrMe && S.hrMe.leave) || []).filter(function (l) { return l.type === key; }).length; }
+  var baseSig = null;
+  function peopleSig() { return JSON.stringify(eng().S().people.filter(function (p) { return p.status === "active"; }).map(function (p) { return [p.code, p.name, p.desig, p.co, p.dept, p.mgr, p.work, p.joining]; })); }
+  /* A change made on the People page (a new name, a new person) is copied into the setup, so every page follows. */
+  function syncPeople() {
+    if (!TPL.eng) return; var sig = peopleSig(); if (baseSig === null) { baseSig = sig; return; } if (sig === baseSig) return; baseSig = sig;
+    var next = cfgCopy(), swaps = [], dirty = false, owner = next.people.filter(function (p) { return p.role === "owner"; })[0];
+    eng().S().people.filter(function (p) { return p.status === "active"; }).forEach(function (p) {
+      var c = next.people.filter(function (x) { return x.code === p.code; })[0], nm = clean(p.name, 60);
+      if (!c) { next.people.push({ code: p.code, name: nm, title: clean(p.desig, 60), co: p.co, dept: clean(p.dept), mgr: p.mgr || "", role: "employee", joining: p.joining || "2025-01-01", work: p.work === "field" ? "field" : "office" }); dirty = true; return; }
+      if (c.name !== nm && nm) { swaps.push([c.name, nm]); c.name = nm; dirty = true; }
+      var t = clean(p.desig, 60); if (t && c.title !== t) { c.title = t; dirty = true; }
+      if (TPL.coNames[p.co] && c.co !== p.co) { c.co = p.co; dirty = true; }
+      if (c.dept !== clean(p.dept)) { c.dept = clean(p.dept); dirty = true; }
+      if (c.work !== p.work && (p.work === "field" || p.work === "office")) { c.work = p.work; dirty = true; }
+      if (c !== owner && p.mgr && p.mgr !== c.mgr && p.mgr !== p.code && !(p.mgr === owner.code && !c.mgr)) { c.mgr = p.mgr; dirty = true; }
+    });
+    if (!dirty || !window.TPLSetup.valid(next)) return;
+    window.setTimeout(function () { eng().save(); var d = raw(TPL.dataKey); swaps.forEach(function (sw) { if (d) d = swapText(sw[0], sw[1])(d); }); if (d) put(TPL.dataKey, d); put(SK, JSON.stringify(next)); put(OKEY, JSON.stringify({ viewer: $("#viewas").value, quiet: 1, hash: window.location.hash })); window.TPLSetup.reload(); }, 0);
+  }
+  function row(cls, main, tools) { return '<div class="cz-li ' + (cls || "") + '">' + main + '<span class="cz-tools">' + (tools || "") + "</span></div>"; }
+  function listsHtml() {
+    var c = TPL.cfg, S = eng().S(), u = undoInfo(), h = "";
+    if (listMsg) h += '<p class="su-err" role="alert">' + esc(listMsg) + "</p>";
+    if (u) h += '<p class="su-ok" role="status">' + esc(u.what) + ' <button type="button" class="btn small" id="cz-undo">Undo</button></p>';
+    h += "<p>Add, rename or delete what the portal lists. A delete can be undone until you close this panel.</p>";
+    /* Companies */
+    h += '<h3 class="cz-h3" id="cz-co-h" tabindex="-1">Companies</h3>' + c.org.companies.map(function (x) { var use = coUse(x.key); return row("", '<input type="text" data-czco="' + x.key + '" value="' + esc(x.name) + '" aria-label="Name of the company ' + esc(x.name) + '" maxlength="60"><small>' + use.people + (use.people === 1 ? " person or seat" : " people and seats") + "</small>", '<button type="button" class="btn small danger" data-czcodel="' + x.key + '"' + (c.org.companies.length < 2 ? " disabled" : "") + ">Delete</button>"); }).join("") +
+      row("add", '<input type="text" id="cz-co-new" placeholder="New company name" aria-label="New company name" maxlength="60">', '<button type="button" class="btn small" id="cz-co-add">Add company</button>');
+    /* People */
+    h += '<h3 class="cz-h3" id="cz-pe-h" tabindex="-1">People</h3>' + S.people.filter(function (p) { return p.status === "active"; }).map(function (p) { var core = coreRole(p.code); return row("", "<span><b>" + esc(p.name) + "</b><small>" + esc(p.code) + ", " + esc(p.desig) + (core ? ". " + core + ": can't be deleted here" : "") + "</small></span>", '<button type="button" class="btn small danger" data-czpdel="' + esc(p.code) + '"' + (core ? " disabled" : "") + ">Delete</button>"); }).join("") +
+      "<p>To add a person or change their details, use the People page. To change who the example employee, HR or the owner is, use Edit setup.</p>";
+    /* Targets */
+    var act = S.targets.filter(function (t) { return t.view === "active"; }), gone = S.targets.filter(function (t) { return t.view === "removed"; });
+    h += '<h3 class="cz-h3" id="cz-tg-h" tabindex="-1">Targets of ' + esc(TPL.viewers[c.focus].name) + "</h3>" + act.map(function (t) { return row("", '<input type="text" data-cztg="' + t.id + '" value="' + esc(t.name) + '" aria-label="Name of the target ' + esc(t.name) + '" maxlength="60"><small>' + (t.kind === "goal" ? "Goal" : "Weekly number") + "</small>", '<button type="button" class="btn small danger" data-cztgdel="' + t.id + '">Delete</button>'); }).join("") +
+      (S.newT || []).map(function (n) { return row("", '<input type="text" data-cztgn="' + n.id + '" value="' + esc(n.name) + '" aria-label="Name of the new target ' + esc(n.name) + '" maxlength="60"><small>New, starts Mon 16 Nov</small>', '<button type="button" class="btn small danger" data-cztgndel="' + n.id + '">Delete</button>'); }).join("") +
+      (act.length || (S.newT || []).length ? "" : "<p>No targets yet.</p>") +
+      gone.map(function (t) { return row("is-off", "<span><b>" + esc(t.name) + "</b><small>Deleted. Its history is kept.</small></span>", '<button type="button" class="btn small" data-cztgback="' + t.id + '">Bring back</button>'); }).join("") +
+      '<div><button type="button" class="btn small" id="cz-tg-add">Add a target</button></div>';
+    /* Leave types */
+    h += '<h3 class="cz-h3" id="cz-lv-h" tabindex="-1">Leave types</h3>' + Object.keys(BASE_L).map(function (k) { return row("", '<input type="text" data-czlv="' + k + '" value="' + esc(C.leave.names[k] || "") + '" placeholder="' + esc(BASE_L[k]) + '" aria-label="Name of ' + esc(BASE_L[k]) + ' leave" maxlength="20"><small>' + S.set.ent[k] + " days a year, set in Settings</small>", '<span class="cz-count">Built in</span>'); }).join("") +
+      C.leave.extra.map(function (x) { return row("", '<input type="text" data-czlvx="' + x.key + '" value="' + esc(x.name) + '" aria-label="Name of ' + esc(x.name) + ' leave" maxlength="20"><input type="text" class="cz-num" inputmode="numeric" data-czlvd="' + x.key + '" value="' + x.days + '" aria-label="Days a year for ' + esc(x.name) + ' leave">', '<button type="button" class="btn small danger" data-czlvdel="' + x.key + '">Delete</button>'); }).join("") +
+      row("add", '<input type="text" id="cz-lv-new" placeholder="New leave type, e.g. Study" aria-label="New leave type" maxlength="20"><input type="text" class="cz-num" id="cz-lv-days" inputmode="numeric" placeholder="Days" aria-label="Days a year">', '<button type="button" class="btn small" id="cz-lv-add">Add leave type</button>') +
+      "<p>The three built-in types can be renamed but not deleted: absent days are taken from the first two.</p>";
+    return h;
+  }
+  function fail(msg, sel) { listMsg = msg; draw(false); listMsg = ""; var f = sel && $("#cz-body " + sel); (f || $("#cz-h")).focus(); }
+  function okDraw(focusSel) { draw(false); var f = $("#cz-body " + focusSel); (f || $("#cz-h")).focus(); }
+  $("#cz").addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("button") : null; if (!t || tab !== "lists") return;
+    var a = function (n) { return t.getAttribute(n); }, S = eng().S(), next, k;
+    if (t.id === "cz-undo") { var u = undoInfo(); if (!u) return; put(SK, u.setup); put(TPL.dataKey, u.data); put(CKEY, u.custom); put(UKEY, null); reopen("Put back."); return; }
+    if (t.id === "cz-co-add") {
+      var nm = clean($("#cz-co-new").value, 60); if (!nm) return fail("Type the new company's name first.", "#cz-co-new");
+      if (TPL.cfg.org.companies.some(function (x) { return x.name.toLowerCase() === nm.toLowerCase(); })) return fail("There is already a company called " + nm + ".", "#cz-co-new");
+      next = cfgCopy(); k = 1; while (next.org.companies.some(function (x) { return x.key === "c" + k; })) k++;
+      next.org.companies.push({ key: "c" + k, name: nm }); next.org.kind = "group"; put(UKEY, null); saveSetup(next, null, nm + " added."); return;
+    }
+    if (a("data-czcodel")) {
+      k = a("data-czcodel"); var co = TPL.cfg.org.companies.filter(function (x) { return x.key === k; })[0], use = coUse(k), parts = [];
+      if (use.people) parts.push(use.people + (use.people === 1 ? " person or seat" : " people and seats")); if (use.jobs) parts.push(use.jobs + (use.jobs === 1 ? " job" : " jobs")); if (use.pol) parts.push(use.pol + (use.pol === 1 ? " policy" : " policies"));
+      if (parts.length) return fail(co.name + " is still used by " + parts.join(", ") + ". Move them to another company first.", '[data-czcodel="' + k + '"]');
+      backup(co.name + " deleted."); next = cfgCopy(); next.org.companies = next.org.companies.filter(function (x) { return x.key !== k; }); if (next.org.companies.length === 1) { next.org.kind = "single"; next.org.name = next.org.name || next.org.companies[0].name; }
+      saveSetup(next, null, ""); return;
+    }
+    if (a("data-czpdel")) {
+      var code = a("data-czpdel"), who = S.people.filter(function (p) { return p.code === code; })[0]; if (!who || coreRole(code)) return;
+      backup(who.name + " deleted."); next = cfgCopy(); next.people = next.people.filter(function (p) { return p.code !== code; }); next.people.forEach(function (p) { if (p.mgr === code) p.mgr = ""; });
+      S.people = S.people.filter(function (p) { return p.code !== code; }); S.people.forEach(function (p) { if (p.mgr === code) p.mgr = TPL.cfg.people.filter(function (x) { return x.role === "owner"; })[0].code; });
+      saveSetup(next, null, ""); return;
+    }
+    if (a("data-cztgdel")) { var tg = S.targets.filter(function (x) { return x.id === a("data-cztgdel"); })[0]; backup("Target “" + tg.name + "” deleted."); tg.view = "removed"; eng().commit(); okDraw("#cz-undo"); return; }
+    if (a("data-cztgback")) { S.targets.filter(function (x) { return x.id === a("data-cztgback"); })[0].view = "active"; eng().commit(); okDraw("#cz-tg-h"); return; }
+    if (a("data-cztgndel")) { var nt = S.newT.filter(function (x) { return x.id === a("data-cztgndel"); })[0]; backup("Target “" + nt.name + "” deleted."); S.newT = S.newT.filter(function (x) { return x !== nt; }); eng().commit(); okDraw("#cz-undo"); return; }
+    if (t.id === "cz-tg-add") { closeCz(); eng().addTarget(); return; }
+    if (t.id === "cz-lv-add") {
+      var ln = clean($("#cz-lv-new").value, 20), dv = String($("#cz-lv-days").value).trim();
+      if (!ln) return fail("Type the new leave type's name first.", "#cz-lv-new");
+      if (Object.keys(eng().LTYPES).some(function (q) { return eng().LTYPES[q].toLowerCase() === ln.toLowerCase(); })) return fail("There is already a leave type called " + ln + ".", "#cz-lv-new");
+      if (!/^\d+$/.test(dv) || Number(dv) > 60) return fail("Give " + ln + " leave whole days from 0 to 60.", "#cz-lv-days");
+      k = 1; while (C.leave.extra.some(function (x) { return x.key === "x" + k; })) k++;
+      C.leave.extra.push({ key: "x" + k, name: ln, days: Number(dv) }); put(UKEY, null); change(true); okDraw("#cz-lv-new"); return;
+    }
+    if (a("data-czlvdel")) {
+      k = a("data-czlvdel"); var lx = C.leave.extra.filter(function (x) { return x.key === k; })[0], used = leaveUse(k);
+      if (used) return fail(lx.name + " leave has " + used + (used === 1 ? " request" : " requests") + ". A type with requests can't be deleted.", '[data-czlvdel="' + k + '"]');
+      backup(lx.name + " leave deleted."); C.leave.extra = C.leave.extra.filter(function (x) { return x !== lx; }); change(true); okDraw("#cz-undo"); return;
+    }
+  });
+  $("#cz").addEventListener("change", function (e) {
+    var t = e.target, a = function (n) { return t.getAttribute(n); }, S, v, k; if (tab !== "lists" || t.type !== "text") return;
+    S = eng().S(); v = clean(t.value, 60);
+    if (a("data-czco")) {
+      k = a("data-czco"); var co = TPL.cfg.org.companies.filter(function (x) { return x.key === k; })[0]; if (v === co.name) return;
+      if (!v) return fail("A company needs a name.", '[data-czco="' + k + '"]');
+      if (TPL.cfg.org.companies.some(function (x) { return x !== co && x.name.toLowerCase() === v.toLowerCase(); })) return fail("There is already a company called " + v + ".", '[data-czco="' + k + '"]');
+      var next = cfgCopy(); next.org.companies.filter(function (x) { return x.key === k; })[0].name = v; if (next.org.kind === "single") next.org.name = v;
+      put(UKEY, null); saveSetup(next, swapText(co.name, v), co.name + " is now " + v + "."); return;
+    }
+    if (a("data-cztg")) { var tg = S.targets.filter(function (x) { return x.id === a("data-cztg"); })[0]; if (!v) { t.value = tg.name; return; } tg.name = v; eng().commit(); return; }
+    if (a("data-cztgn")) { var nt = S.newT.filter(function (x) { return x.id === a("data-cztgn"); })[0]; if (!v) { t.value = nt.name; return; } nt.name = v; eng().commit(); return; }
+    if (a("data-czlv")) { k = a("data-czlv"); v = clean(t.value, 20); if (v && v !== BASE_L[k]) C.leave.names[k] = v; else delete C.leave.names[k]; change(true); return; }
+    if (a("data-czlvx")) { var lx = C.leave.extra.filter(function (x) { return x.key === a("data-czlvx"); })[0]; v = clean(t.value, 20); if (!v) { t.value = lx.name; return; } lx.name = v; change(true); return; }
+    if (a("data-czlvd")) { var ld = C.leave.extra.filter(function (x) { return x.key === a("data-czlvd"); })[0], dv = String(t.value).trim(); if (!/^\d+$/.test(dv) || Number(dv) > 60) { t.value = ld.days; return fail("Use whole days from 0 to 60.", '[data-czlvd="' + ld.key + '"]'); } ld.days = Number(dv); change(true); }
+  });
+
+  /* ---------- Rules: when the shift starts, and which days are worked ----------
+     The example week was recorded on a 10:00 AM shift. A different start moves every clock time on the screen by
+     the same amount, and time fields take and give times on the new clock, so the record stays consistent. */
+  var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  function hhmm(m) { m = ((m % 1440) + 1440) % 1440; var h = Math.floor(m / 60), mm = ("0" + (m % 60)).slice(-2); return (h % 12 || 12) + ":" + mm + (h >= 12 ? " PM" : " AM"); }
+  function shiftField(v, d) { var p = /^(\d{1,2}):(\d{2})$/.exec(v || ""); if (!p) return v; var m = (((Number(p[1]) * 60 + Number(p[2]) + d) % 1440) + 1440) % 1440; return ("0" + Math.floor(m / 60)).slice(-2) + ":" + ("0" + (m % 60)).slice(-2); }
+  function timeInputs(forward) {
+    var d = delta();
+    $$('#sheet input[type="time"]').forEach(function (el) {
+      if (forward) { if (el.hasAttribute("data-czt") || !d) return; el.setAttribute("data-czt", String(d)); if (el.value) el.value = shiftField(el.value, d); }
+      else if (el.hasAttribute("data-czt")) { var was = Number(el.getAttribute("data-czt")); el.removeAttribute("data-czt"); if (el.value) el.value = shiftField(el.value, -was); }
+    });
+  }
+  document.addEventListener("submit", function (e) {
+    if (!e.target || e.target.id !== "sheet-form") return;
+    timeInputs(false);
+    window.setTimeout(function () { if ($("#sheet").classList.contains("on")) timeInputs(true); }, 0);
+  }, true);
+  function rulesHtml() {
+    var g = eng().S().set.grace, opts = "", m;
+    for (m = 360; m <= 840; m += 30) opts += '<option value="' + m + '"' + (m === C.rules.shift ? " selected" : "") + ">" + hhmm(m) + "</option>";
+    return "<p>Set when the working day starts and which days are worked. Everything that shows a clock time, and attendance, pay and leave, follow.</p>" +
+      '<div class="cz-field"><label for="cz-shift">The shift starts at</label><select id="cz-shift">' + opts + "</select></div>" +
+      '<p id="cz-shift-sum">Shift ' + hhmm(C.rules.shift) + " to " + hhmm(C.rules.shift + 540) + ", 9 hours. Late after " + hhmm(C.rules.shift + g) + " (" + g + " minutes grace, set in Settings).</p>" +
+      '<h3 class="cz-h3" id="cz-days-h" tabindex="-1">Working days</h3>' +
+      [1, 2, 3, 4, 5, 6, 0].map(function (d) { var lock = d === 2 || d === 0, on = d !== 0 && C.rules.off.indexOf(d) < 0; return '<label class="check"><input type="checkbox" data-czoff="' + d + '"' + (on ? " checked" : "") + (lock ? " disabled" : "") + "><span>" + DAYS[d] + (d === 2 ? " <small>The example day, Tue 10 Nov, so it stays a working day</small>" : d === 0 ? " <small>Always a day off in the example week</small>" : "") + "</span></label>"; }).join("") +
+      "<p>A day off is not counted in attendance, pay or leave. The shift is 9 hours long in the example; only its start can move.</p>";
+  }
+  $("#cz").addEventListener("change", function (e) {
+    var t = e.target; if (tab !== "rules") return;
+    if (t.id === "cz-shift") { C.rules.shift = Number(t.value); change(true); draw(true); }
+    else if (t.hasAttribute("data-czoff")) { var d = Number(t.getAttribute("data-czoff")); C.rules.off = C.rules.off.filter(function (x) { return x !== d; }); if (!t.checked) C.rules.off.push(d); change(true); draw(true); }
+  });
+  document.addEventListener("change", function (e) { if (e.target && e.target.id === "viewas") { if (!isHR()) closeCz(); apply(false); } });
+  var again = $("#tpl-again"); if (again) again.addEventListener("click", function () { if (again.getAttribute("data-sure") !== "1") { try { window.localStorage.removeItem(CKEY); } catch (e) { /* storage blocked */ } } }, true);
+  TPL.customKey = CKEY;
+  TPL.startCustom = function () {
+    apply(true);
+    var re = null; try { re = JSON.parse(raw(OKEY) || "null"); } catch (e) { re = null; } put(OKEY, null);
+    if (re && TPL.viewers[re.viewer]) { var va = $("#viewas"); if (va.value !== re.viewer) { va.value = re.viewer; va.dispatchEvent(new window.Event("change", { bubbles: true })); } if (re.quiet) { if (re.hash) { try { window.location.hash = re.hash; } catch (e) { /* hash blocked */ } } } else if (isHR()) { tab = "lists"; openCz(); if (re.msg) { $("#cz-count").textContent = re.msg; } } }
+    else put(UKEY, null); if (window.MutationObserver) { obs = new window.MutationObserver(function () { apply(false); }); obs.observe(document.body, { childList: true, subtree: true, characterData: true }); } };
+})();
+</script>

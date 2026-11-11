@@ -1,0 +1,450 @@
+<!--CSS-->
+/* ---------- Template: the setup screen ---------- */
+body.su-on > :not(#setup):not(script):not(style) { display: none !important; }
+#setup { min-height: 100vh; padding-block: 28px 56px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.su-wrap { max-width: 880px; margin: 0 auto; display: grid; gap: 18px; }
+.su-head { position: relative; overflow: hidden; isolation: isolate; border-radius: var(--r-hero); background: var(--fill); color: #fff; padding: 22px 24px 20px; box-shadow: var(--lift-2); }
+.su-head::before { content: ""; position: absolute; inset: -40% -10% auto 40%; height: 220%; z-index: -1; background: radial-gradient(closest-side, rgba(34, 199, 187, .34), transparent 70%), radial-gradient(closest-side at 80% 40%, rgba(79, 134, 255, .3), transparent 70%); }
+.su-kicker { font-size: 0.8125rem; font-weight: 600; color: var(--on-dark-2); }
+.su-head h1 { margin: 4px 0 2px; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; text-wrap: balance; }
+.su-head p { margin: 0; color: var(--on-dark-2); max-width: 62ch; }
+.su-steps { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.su-steps li { font-size: 0.75rem; font-weight: 600; color: var(--on-dark-2); display: grid; gap: 6px; }
+.su-steps li::before { content: ""; height: 4px; border-radius: 4px; background: rgba(255, 255, 255, .22); transition: background .25s ease; }
+.su-steps li.done::before { background: var(--ok-hi); }
+.su-steps li[aria-current="step"] { color: #fff; }
+.su-steps li[aria-current="step"]::before { background: var(--sig-teal); }
+@media (max-width: 640px) { .su-steps li span { display: none; } }
+.su-card { padding: 20px 22px; display: grid; gap: 16px; }
+.su-card h2 { margin: 0; font-size: 1.25rem; font-weight: 750; letter-spacing: -0.01em; }
+.su-card h2:focus { outline: none; }
+#su-body > p { margin: 0; color: var(--muted); max-width: 68ch; }
+#su-body > p.su-err, #su-body > p.su-ok, #su-body > p.su-note { max-width: none; }
+#su-body > p.su-err { color: var(--bad); } #su-body > p.su-ok { color: var(--ok); } #su-body > p.su-note { color: var(--ink); }
+.su-err { margin: 0; padding: 10px 14px; border-radius: 10px; background: var(--bad-soft); color: var(--bad); font-weight: 600; font-size: 0.875rem; }
+.su-ok { margin: 0; padding: 10px 14px; border-radius: 10px; background: var(--ok-soft); color: var(--ok); font-weight: 600; font-size: 0.875rem; }
+.su-note { margin: 0; padding: 10px 14px; border-radius: 10px; background: var(--dye-soft); color: var(--ink); font-size: 0.875rem; }
+.su-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.su-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 640px) { .su-grid, .su-grid.three { grid-template-columns: 1fr; } }
+.su-kind { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.su-kind label { display: grid; gap: 4px; padding: 14px 16px; border: 1.5px solid var(--rule-2); border-radius: 12px; cursor: pointer; background: var(--sheet); }
+.su-kind label:has(input:checked) { border-color: var(--sb); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sb) 22%, transparent); }
+.su-kind input { position: absolute; opacity: 0; }
+.su-kind label:has(input:focus-visible) { outline: 2px solid var(--dye); outline-offset: 2px; }
+.su-kind b { font-weight: 700; }
+.su-kind span { color: var(--muted); font-size: 0.8125rem; }
+@media (max-width: 520px) { .su-kind { grid-template-columns: 1fr; } }
+.su-rows { display: grid; gap: 10px; }
+.su-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: end; }
+.su-row.hol { grid-template-columns: 170px minmax(0, 1fr) auto; }
+@media (max-width: 560px) { .su-row.hol { grid-template-columns: 1fr; } }
+.su-person { border: 1px solid var(--rule); border-radius: 12px; padding: 14px; display: grid; gap: 12px; background: var(--wash); }
+.su-person legend { font-weight: 700; padding: 0 6px; font-size: 0.875rem; }
+.su-pgrid { display: grid; gap: 10px 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 760px) { .su-pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .su-pgrid { grid-template-columns: 1fr; } }
+.su-person .field input, .su-person .field select { min-height: 42px; }
+.su-foot { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.su-foot .sp { flex: 1; }
+.su-card details { border: 1px solid var(--rule); border-radius: 12px; padding: 10px 14px; }
+.su-card details summary { cursor: pointer; font-weight: 600; min-height: 32px; display: flex; align-items: center; }
+.su-card details[open] summary { margin-bottom: 10px; }
+.su-card details .field { margin-bottom: 10px; }
+.su-card textarea.code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.8125rem; min-height: 110px; }
+.su-sum { margin: 0; display: grid; gap: 0; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.su-sum div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 12px; padding: 10px 14px; }
+.su-sum div + div { border-top: 1px solid var(--rule); }
+.su-sum dt { color: var(--muted); font-size: 0.875rem; }
+.su-sum dd { margin: 0; font-weight: 600; }
+@media (max-width: 520px) { .su-sum div { grid-template-columns: 1fr; gap: 2px; } }
+.su-mods { display: grid; gap: 4px; }
+.su-mods .check { align-items: flex-start; padding: 8px 0; }
+.su-mods .check small { display: block; color: var(--muted); font-weight: 400; }
+.ribbon .rb + .rb { margin-left: 0; }
+.ribbon .rb.warn { border-color: var(--bad-hi); color: var(--bad-hi); }
+<!--HTML-->
+<div id="setup" hidden>
+  <div class="su-wrap">
+    <header class="su-head">
+      <div class="su-kicker">HR portal template</div>
+      <h1>Set up your HR portal</h1>
+      <p id="su-step-l" aria-live="polite"></p>
+      <ol class="su-steps" id="su-steps" aria-label="Setup steps"></ol>
+    </header>
+    <form class="panel su-card" id="su-form" novalidate>
+      <div id="su-body" style="display:grid;gap:16px"></div>
+      <div class="su-foot">
+        <button type="button" class="btn" id="su-back">Back</button>
+        <button type="button" class="btn link" id="su-cancel" hidden>Back to the portal</button>
+        <span class="sp"></span>
+        <button type="submit" class="btn primary" id="su-next">Next</button>
+      </div>
+    </form>
+    <p class="notes" style="margin:0">Everything you type stays in this browser. Nothing is sent anywhere. Don't enter ID numbers, bank accounts, phone numbers or home addresses: the portal doesn't need them.</p>
+  </div>
+</div>
+<!--JS-->
+<script>
+(function () {
+  "use strict";
+  /* The preview build is for showing the template to people: it opens on the sample company, with no setup screen. */
+  var PREVIEW = /*__PREVIEW__*/false;
+  var SKEY = PREVIEW ? "hr-template-preview-setup-v1" : "hr-template-setup-v1", DKEY = PREVIEW ? "hr-template-preview-data-v1" : "hr-template-data-v1";
+  var DEMO = /*__DEMO__*/null;
+  var SAMPLE = /*__SAMPLE__*/null;
+  var STEPS = ["Organisation", "Working rules", "Leave", "People", "Example employee", "Modules", "Review"];
+  var ROLES = { owner: "Owner", hr: "HR", manager: "Manager", employee: "Employee" };
+  var MODS = [["recruit", "Recruitment", "Jobs, candidates, offers and joining"], ["payroll", "Payroll and payslips", "HR works out pay; each person sees their payslip"], ["friday", "Friday pack", "The weekly meeting pack with every presenter's numbers"], ["perf", "Performance", "Monthly scores and the manager's review"]];
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  /* Names end up inside the portal's own HTML, so markup characters are taken out here, once. */
+  function clean(s, max) { return String(s == null ? "" : s).replace(/[<>&"`\\]/g, " ").replace(/'/g, "’").replace(/\s+/g, " ").trim().slice(0, max || 60); }
+  function cleanCode(s) { return String(s == null ? "" : s).toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 10); }
+  function first(n) { return String(n).split(" ")[0]; }
+  function ini(n) { var p = String(n).split(" ").filter(Boolean); return ((p[0] || "?").charAt(0) + (p.length > 1 ? p[p.length - 1].charAt(0) : "")).toUpperCase(); }
+  function read(k) { try { return JSON.parse(window.localStorage.getItem(k) || "null"); } catch (e) { return null; } }
+  function write(k, v) { try { window.localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+  function drop(k) { try { window.localStorage.removeItem(k); } catch (e) { /* storage blocked */ } }
+
+  /* ---------- Checking a setup ---------- */
+  function normalise(c) {
+    if (!c || typeof c !== "object" || !c.org || !Array.isArray(c.people)) return null;
+    var out = { v: 1, org: { kind: c.org.kind === "single" ? "single" : "group", name: clean(c.org.name), companies: [] }, rules: {}, people: [], focus: "", modules: {} };
+    var usedKeys = {}, nk = 0;
+    (Array.isArray(c.org.companies) ? c.org.companies : []).forEach(function (x) { var k = x && /^c\d+$/.test(x.key || "") && !usedKeys[x.key] ? x.key : null; if (k) usedKeys[k] = 1; });
+    (Array.isArray(c.org.companies) ? c.org.companies : []).forEach(function (x) { var n = clean(x && x.name); if (!n) return; var k = /^c\d+$/.test(x.key || "") && usedKeys[x.key] === 1 ? x.key : null; if (k) usedKeys[k] = 2; else { do { k = "c" + (++nk); } while (usedKeys[k]); usedKeys[k] = 2; } out.org.companies.push({ key: k, name: n, was: x.key }); });
+    if (out.org.kind === "single") out.org.companies = [{ key: "c1", name: out.org.name, was: (c.org.companies[0] || {}).key }];
+    var r = c.rules || {};
+    out.rules = { grace: [5, 10, 15, 20, 30].indexOf(Number(r.grace)) >= 0 ? Number(r.grace) : 15, halfMin: [240, 270, 300].indexOf(Number(r.halfMin)) >= 0 ? Number(r.halfMin) : 270,
+      currency: (String(r.currency || "PKR").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 4)) || "PKR", ent: {}, holidays: {} };
+    ["casual", "annual", "sick"].forEach(function (t) { var n = Math.floor(Number((r.ent || {})[t])); out.rules.ent[t] = n >= 0 && n <= 60 ? n : DEMO.ent[t]; });
+    Object.keys(DEMO.hol).forEach(function (d) { out.rules.holidays[d] = clean((r.holidays || {})[d]) || DEMO.hol[d]; });
+    Object.keys(r.holidays || {}).forEach(function (d) { if (/^2026-\d{2}-\d{2}$/.test(d) && !out.rules.holidays[d] && clean(r.holidays[d])) out.rules.holidays[d] = clean(r.holidays[d]); });
+    var keyOf = {}; out.org.companies.forEach(function (x) { if (x.was) keyOf[x.was] = x.key; keyOf[x.key] = keyOf[x.key] || x.key; delete x.was; });
+    c.people.forEach(function (p) {
+      if (!p) return;
+      out.people.push({ code: cleanCode(p.code), name: clean(p.name), title: clean(p.title), co: keyOf[p.co] || out.org.companies[0].key, dept: clean(p.dept, 40), mgr: cleanCode(p.mgr),
+        role: ROLES[p.role] ? p.role : "employee", joining: /^\d{4}-\d{2}-\d{2}$/.test(p.joining || "") ? p.joining : "2025-01-01", work: p.work === "field" ? "field" : "office" });
+    });
+    out.focus = cleanCode(c.focus); if (c.hr1) out.hr1 = cleanCode(c.hr1);
+    MODS.forEach(function (m) { out.modules[m[0]] = !c.modules || c.modules[m[0]] !== false; });
+    return out;
+  }
+  function problems(c, upTo) {
+    var e = [], n = upTo || 7;
+    if (!c.org.name) e.push([1, "#su-org", "Give your organisation a name."]);
+    if (c.org.kind === "group") {
+      if (c.org.companies.length < 2) e.push([1, "#su-addco", "A group has at least 2 companies. Add another, or choose One company."]);
+      var seen = {}; c.org.companies.forEach(function (x, i) { var k = x.name.toLowerCase(); if (!x.name) e.push([1, '[data-co="' + i + '"]', "Give company " + (i + 1) + " a name."]); else if (seen[k]) e.push([1, '[data-co="' + i + '"]', "Two companies are called " + x.name + ". Give each its own name."]); seen[k] = 1; });
+    }
+    if (n >= 2 && !/^[A-Z]{2,4}$/.test(c.rules.currency)) e.push([2, "#su-cur", "Write the currency as 2 to 4 letters, like PKR or USD."]);
+    if (n >= 2) Object.keys(c.rules.holidays).forEach(function (d) { if (!c.rules.holidays[d]) e.push([2, '[data-hol="' + d + '"]', "Give the holiday on " + d + " a name."]); });
+    if (n >= 3) ["casual", "annual", "sick"].forEach(function (t) { var v = c.rules.ent[t]; if (!(v >= 0 && v <= 60 && Math.floor(v) === v)) e.push([3, "#su-ent-" + t, "Use whole days from 0 to 60 for " + t + " leave."]); });
+    if (n >= 4) {
+      var P = c.people, codes = {};
+      if (P.length < 3) e.push([4, "#su-addp", "Add at least 3 people: the owner, one HR person and one employee."]);
+      P.forEach(function (p, i) {
+        if (!p.name) e.push([4, '[data-pi="' + i + '"][data-pf="name"]', "Person " + (i + 1) + " needs a name."]);
+        if (!p.code) e.push([4, '[data-pi="' + i + '"][data-pf="code"]', (p.name || "Person " + (i + 1)) + " needs an employee code."]);
+        else if (codes[p.code]) e.push([4, '[data-pi="' + i + '"][data-pf="code"]', "The code " + p.code + " is used twice. Each person needs their own."]);
+        codes[p.code] = 1;
+        if (!p.title) e.push([4, '[data-pi="' + i + '"][data-pf="title"]', (p.name || "Person " + (i + 1)) + " needs a job title."]);
+        if (p.mgr && p.mgr === p.code) e.push([4, '[data-pi="' + i + '"][data-pf="mgr"]', (p.name || "A person") + " can't be their own line manager."]);
+      });
+      var by = function (r) { return P.filter(function (p) { return p.role === r; }).length; };
+      if (P.length >= 3) {
+        if (by("owner") !== 1) e.push([4, "#su-people", by("owner") ? "Only one person can be the owner. Make the others managers." : "Choose who the owner is. The owner reads everything; HR does the work."]);
+        if (!by("hr")) e.push([4, "#su-people", "Give at least one person the HR role. HR approves leave, checks entries and runs payroll."]);
+        if (!by("employee") && !by("manager")) e.push([4, "#su-people", "Add at least one employee or manager."]);
+      }
+    }
+    if (n >= 5 && !e.length) { var f = c.people.filter(function (p) { return p.code === c.focus; })[0]; if (!f || (f.role !== "employee" && f.role !== "manager")) e.push([5, "#su-focus", "Choose the employee whose week the portal shows."]); }
+    return e;
+  }
+  function valid(c) { var n = normalise(c); if (!n) return null; n.people.forEach(function (p) { if (p.mgr && !n.people.some(function (q) { return q.code === p.mgr; })) p.mgr = ""; }); return problems(n).length ? null : n; }
+
+  /* ---------- The portal's cast, from a setup ----------
+     The portal engine tells one connected story (an employee, two HR people, the owner and their colleagues) on an
+     example week. Here every part in that story is given to one of the people from the setup, and every company to
+     one of theirs. RC() rewrites the engine's own strings with those names. */
+  function buildTPL(c) {
+    var P = c.people, find = function (code) { return P.filter(function (p) { return p.code === code; })[0]; };
+    var focus = find(c.focus), owner = P.filter(function (p) { return p.role === "owner"; })[0], hrs = P.filter(function (p) { return p.role === "hr"; });
+    var hr1 = hrs.filter(function (p) { return p.code === c.hr1; })[0] || hrs[0], hr2 = hrs.filter(function (p) { return p !== hr1; })[0] || owner, core = [focus, hr1, hr2, owner];
+    var pool = P.filter(function (p) { return core.indexOf(p) < 0 && p.role === "manager"; }).concat(P.filter(function (p) { return core.indexOf(p) < 0 && p.role !== "manager"; }));
+    var cast = {}, primary = {}, k = 0;
+    var ghost = {}, G = "⁣";
+    function give(code, u, isCore) { cast[code] = u; if (!primary[u.code]) primary[u.code] = code; else if (!isCore) ghost[code] = 1; }
+    DEMO.people.forEach(function (d) { if (d.cls === "focus") give(d.code, focus, 1); else if (d.cls === "hr1") give(d.code, hr1, 1); else if (d.cls === "hr2") give(d.code, hr2, 1); else if (d.cls === "owner") give(d.code, owner, 1); });
+    DEMO.people.forEach(function (d) { if (cast[d.code]) return; give(d.code, pool.length ? pool[k++ % pool.length] : focus); });
+    /* Companies: the example employee's and HR's companies first, then the others in order. */
+    var cos = c.org.companies, coMap = {}, rest = cos.filter(function (x) { return x.key !== focus.co && x.key !== hr1.co; }), j = 0;
+    DEMO.cos.forEach(function (d) { coMap[d.key] = d.cls === "focus" ? find(focus.code).co : d.cls === "hr" ? hr1.co : (rest.length ? rest[j++ % rest.length].key : cos[j++ % cos.length].key); });
+    var coName = {}; cos.forEach(function (x) { coName[x.key] = x.name; });
+    var MAP = {}, GT = {};
+    DEMO.people.forEach(function (d) { var u = cast[d.code]; MAP[d.code] = u.code; MAP[d.name] = u.name; if (d.short) MAP[d.short] = first(u.name); if (ghost[d.code]) { GT[d.code] = GT[d.name] = 1; if (d.short) GT[d.short] = 1; } });
+    DEMO.cos.forEach(function (d) { MAP[d.key] = coMap[d.key]; MAP[d.name] = coName[coMap[d.key]]; });
+    MAP[DEMO.titles.focus] = focus.title; MAP[DEMO.titles.hr1] = hr1.title; MAP[DEMO.titles.hr2] = hr2.title;
+    MAP[DEMO.cur] = c.rules.currency;
+    Object.keys(DEMO.hol).forEach(function (d) { MAP[DEMO.hol[d]] = c.rules.holidays[d]; });
+    var toks = Object.keys(MAP).sort(function (a, b) { return b.length - a.length; }).map(function (t) { return t.replace(/[.*+?^${}()|[\]\\\/-]/g, "\\$&"); });
+    var RE = new RegExp("(?<![A-Za-z0-9])(" + toks.join("|") + ")(?![A-Za-z0-9])", "g"), memo = {};
+    function rc(s) { if (typeof s !== "string") return s; var h = memo[s]; if (h === undefined) h = memo[s] = s.replace(RE, function (m) { return MAP[m]; }); return h; }
+    /* In tables of example rows, a part that had to share a person is marked, so prune() can drop its row. */
+    function rcg(s) { return typeof s === "string" ? s.replace(RE, function (m) { return MAP[m] + (GT[m] ? G : ""); }) : s; }
+    function marked(v) { return typeof v === "string" && v.indexOf(G) >= 0; }
+    function direct(el) { if (marked(el)) return true; if (!el || typeof el !== "object") return false; if (Array.isArray(el)) return el.some(marked); return Object.keys(el).some(function (q) { return marked(q) || (q !== "mgr" && marked(el[q])); }); }
+    function prune(x) {
+      if (Array.isArray(x)) return x.filter(function (el) { return !direct(el); }).map(prune);
+      if (x && typeof x === "object") { var o = {}; Object.keys(x).forEach(function (q) { if (marked(q)) return; var v = x[q]; if (marked(v)) { if (q === "mgr") o[q] = owner.code; return; } o[q] = prune(v); }); return o; }
+      return x;
+    }
+    var off = {}, offKind = {};
+    if (!c.modules.recruit) { off.recruit = 1; offKind.Hiring = 1; }
+    if (!c.modules.payroll) { off.payroll = 1; off.payslips = 1; offKind.Payroll = 1; }
+    if (!c.modules.friday) off.friday = 1;
+    if (!c.modules.perf) off.perf = 1;
+    var viewers = {};
+    viewers[focus.code] = { name: focus.name, role: "Employee", ini: ini(focus.name) };
+    viewers[hr2.code] = { name: hr2.name, short: first(hr2.name), role: "HR", label: hr2 === owner ? "Owner" : "HR", ini: ini(hr2.name) };
+    viewers[hr1.code] = { name: hr1.name, short: hr1.name, role: "HR", label: "HR", ini: ini(hr1.name) };
+    return {
+      cfg: c, rc: rc, rcg: rcg, prune: prune, focus: focus.code, off: off, viewers: viewers, coNames: coName, dataKey: DKEY,
+      kindOn: function (i) { return !offKind[i.kind]; },
+      /* The roster is exactly the people from the setup. Example health and scores come from each person's part. */
+      roster: function (list) {
+        var at = {}; DEMO.rosterCodes.forEach(function (code, i) { at[code] = list[i]; });
+        var allCos = cos.map(function (x) { return x.key; }), used = {};
+        var rows = P.map(function (u, i) {
+          var d = at[primary[u.code]] || null, machine = u.work === "field" ? "" : String(101 + i);
+          used[machine] = 1;
+          return { code: u.code, name: u.name, desig: u.title, role: u.role === "manager" ? "employee" : u.role, co: u.co, dept: u.dept, mgr: u.mgr || (u === owner ? "" : owner.code), machine: machine, joining: u.joining, work: u.work,
+            friday: u === focus || u.role !== "employee", cos: u === owner ? allCos : [u.co], status: "active", health: u === focus ? "live" : u === owner ? "owner" : (d && d.health && d.health !== "live" && d.health !== "owner" ? d.health : "green"),
+            score: d && u !== owner ? d.score : "", cs: d && u !== focus ? d.cs : "", login: true, log: [] };
+        });
+        list.filter(function (d) { return d.status === "to_hire"; }).forEach(function (d) { d.cos = [d.co]; if (!find(d.mgr)) d.mgr = owner.code; rows.push(d); });
+        return rows;
+      },
+      /* Payroll: the example pay lines that belong to someone, then everyone else with made-up pay. */
+      staff: function (rows) {
+        var have = {}, EX = [[95000, 3000, 2100], [130000, 3000, 4300], [72000, 2000, 900], [210000, 5000, 15800], [58000, 2000, 0]], n = 0;
+        rows.forEach(function (r) { have[r.code] = 1; });
+        P.forEach(function (u) { if (u === owner || have[u.code]) return; var e = EX[n++ % EX.length]; rows.push({ code: u.code, name: u.name, co: coName[u.co], gross: e[0], comm: e[1], fuel: 0, tax: e[2], pf: true }); });
+        return rows;
+      },
+      today: function (t) {
+        var EX = ["9:38", "9:51", "9:44", "10:07", "9:58", "9:49", "10:21", "9:33"], n = 0;
+        P.forEach(function (u, i) { if (u === owner || u === focus || u.work === "field" || t.punches[u.code]) return; if (i % 9 === 8) return; t.punches[u.code] = EX[n++ % EX.length]; });
+        return t;
+      },
+      cos: function (orig) {
+        return cos.map(function (x, i) { var src = x.key === focus.co ? orig[DEMO.cosFocusIdx] : orig[[1, 2, 4, 0][i % 4]]; var o = {}; Object.keys(src).forEach(function (q) { o[q] = src[q]; }); o.name = x.name; return o; });
+      },
+      dom: function () {
+        var w = document.createTreeWalker(document.body, 4, null), n, skip = $("#setup");
+        while ((n = w.nextNode())) { if (skip.contains(n) || /^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) continue; var t = rc(n.nodeValue); if (t !== n.nodeValue) n.nodeValue = t; }
+        $$("[aria-label], [placeholder], [data-soon], [title]").forEach(function (el) { if (skip.contains(el)) return; ["aria-label", "placeholder", "data-soon", "title"].forEach(function (a) { var v = el.getAttribute(a); if (v) el.setAttribute(a, rc(v)); }); });
+        var demoKeys = DEMO.cos.map(function (d) { return d.key; });
+        $$("select").forEach(function (sel) {
+          if (skip.contains(sel)) return; var had = false;
+          $$("option", sel).forEach(function (o) { if (demoKeys.indexOf(o.value) >= 0) { had = true; o.remove(); } });
+          if (had) cos.forEach(function (x) { var o = document.createElement("option"); o.value = x.key; o.textContent = x.name; sel.appendChild(o); });
+        });
+        var va = $("#viewas");
+        va.innerHTML = [focus, hr2, hr1].map(function (u) { return '<option value="' + u.code + '">' + esc(u === focus ? u.name : viewers[u.code].short) + " (" + (u === focus ? "employee" : viewers[u.code].label === "Owner" ? "owner" : "HR") + ")</option>"; }).join("");
+        $$(".avatar").forEach(function (av) { if (!skip.contains(av) && /^[A-Z]{2}$/.test(av.textContent.trim())) av.textContent = ini(focus.name); });
+        document.title = c.org.name + " HR portal";
+        Object.keys(off).forEach(function (r) { document.body.classList.add("off-" + r); });
+        if (c.org.kind === "single") document.body.classList.add("one-co");
+        var rb = $("#reset");
+        var AGAIN = PREVIEW ? "Reset the preview" : "Start again";
+        rb.insertAdjacentHTML("afterend", (PREVIEW ? "" : '<button type="button" class="rb" id="tpl-edit">Edit setup</button>') + '<button type="button" class="rb warn" id="tpl-again">' + AGAIN + "</button>");
+        $(".ribbon b").textContent = PREVIEW ? "Preview" : "Example week";
+        if (PREVIEW) { var note = $(".ribbon span"); if (note) note.textContent = "This is a preview of the HR portal template, with a sample company. Ask us for the template to set it up with your own companies, people and rules."; document.title = "HR portal template, preview"; }
+        if (!PREVIEW) $("#tpl-edit").addEventListener("click", function () { open(JSON.parse(JSON.stringify(c)), true); });
+        $("#tpl-again").addEventListener("click", function () {
+          var b = $("#tpl-again");
+          if (b.getAttribute("data-sure") !== "1") { b.setAttribute("data-sure", "1"); b.textContent = PREVIEW ? "Reset everything? Yes" : "Erase this portal? Yes"; setTimeout(function () { if (b.isConnected) { b.removeAttribute("data-sure"); b.textContent = AGAIN; } }, 6000); return; }
+          drop(SKEY); drop(DKEY); reload();
+        });
+      }
+    };
+  }
+  function reload() { window.__tplReload = (window.__tplReload || 0) + 1; try { if (window.location.hash) window.location.hash = ""; window.location.reload(); } catch (e) { /* no reload here */ } }
+
+  /* ---------- The setup screen ---------- */
+  var D = null, step = 1, editing = false, flash = "", seqCo = 0;
+  function blank() { return { v: 1, org: { kind: "group", name: "", companies: [{ key: "c1", name: "" }, { key: "c2", name: "" }] }, rules: { grace: 15, halfMin: 270, currency: "PKR", ent: JSON.parse(JSON.stringify(DEMO.ent)), holidays: JSON.parse(JSON.stringify(DEMO.hol)) }, people: [newP("owner"), newP("hr"), newP("employee")], focus: "", modules: { recruit: true, payroll: true, friday: true, perf: true } }; }
+  function newP(role) { return { code: "", name: "", title: "", co: "c1", dept: "", mgr: "", role: role || "employee", joining: "2025-01-01", work: "office" }; }
+  function open(draft, isEdit) {
+    D = draft || blank(); editing = !!isEdit; step = 1; flash = "";
+    seqCo = D.org.companies.length;
+    document.body.classList.add("su-on"); $("#setup").hidden = false;
+    render(true);
+  }
+  function coOpts(sel) { return D.org.companies.map(function (x, i) { return '<option value="' + x.key + '"' + (x.key === sel ? " selected" : "") + ">" + esc(x.name || "Company " + (i + 1)) + "</option>"; }).join(""); }
+  function mgrOpts(i) { var me = D.people[i]; return '<option value="">No one</option>' + D.people.map(function (p, q) { return q === i || !p.code ? "" : '<option value="' + esc(p.code) + '"' + (p.code === me.mgr ? " selected" : "") + ">" + esc(p.name || p.code) + "</option>"; }).join(""); }
+  function personCard(p, i) {
+    var f = function (lab, field, html) { return '<div class="field"><label for="su-p' + i + "-" + field + '">' + lab + "</label>" + html + "</div>"; };
+    var inp = function (field, extra) { return '<input id="su-p' + i + "-" + field + '" data-pi="' + i + '" data-pf="' + field + '" value="' + esc(p[field]) + '"' + (extra || "") + ">"; };
+    return '<fieldset class="su-person" data-person="' + i + '"><legend>' + esc(p.name || "Person " + (i + 1)) + '</legend><div class="su-pgrid">' +
+      f("Name", "name", inp("name", ' autocomplete="off"')) + f("Employee code", "code", inp("code", ' autocomplete="off" placeholder="e.g. E-01"')) + f("Job title", "title", inp("title")) +
+      (D.org.kind === "group" ? f("Company", "co", '<select id="su-p' + i + '-co" data-pi="' + i + '" data-pf="co">' + coOpts(p.co) + "</select>") : "") +
+      f("Department", "dept", inp("dept")) +
+      f("Line manager", "mgr", '<select id="su-p' + i + '-mgr" data-pi="' + i + '" data-pf="mgr">' + mgrOpts(i) + "</select>") +
+      f("Role", "role", '<select id="su-p' + i + '-role" data-pi="' + i + '" data-pf="role">' + Object.keys(ROLES).map(function (r) { return '<option value="' + r + '"' + (r === p.role ? " selected" : "") + ">" + ROLES[r] + "</option>"; }).join("") + "</select>") +
+      f("Joining date", "joining", inp("joining", ' type="date"')) +
+      f("Works from", "work", '<select id="su-p' + i + '-work" data-pi="' + i + '" data-pf="work"><option value="office"' + (p.work === "office" ? " selected" : "") + '>Office</option><option value="field"' + (p.work === "field" ? " selected" : "") + ">Field</option></select>") +
+      '</div><div><button type="button" class="btn small danger" data-delp="' + i + '">Remove ' + esc(p.name || "person " + (i + 1)) + "</button></div></fieldset>";
+  }
+  function body() {
+    var c = D, h = "";
+    if (step === 1) {
+      h = '<h2 tabindex="-1">Your organisation</h2><p>Start here. You can change any answer later with Edit setup.</p>' +
+        '<div class="su-kind" role="radiogroup" aria-label="One company or a group"><label><input type="radio" name="su-kind" value="group"' + (c.org.kind === "group" ? " checked" : "") + '><b>A group of companies</b><span>Several companies under one owner, with shared HR</span></label><label><input type="radio" name="su-kind" value="single"' + (c.org.kind === "single" ? " checked" : "") + "><b>One company</b><span>A single company with its own people</span></label></div>" +
+        '<div class="field"><label for="su-org">' + (c.org.kind === "group" ? "Group name" : "Company name") + '</label><input id="su-org" value="' + esc(c.org.name) + '" autocomplete="organization"></div>' +
+        (c.org.kind === "group" ? '<div class="su-rows" id="su-cos">' + c.org.companies.map(function (x, i) { return '<div class="su-row"><div class="field"><label for="su-co' + i + '">Company ' + (i + 1) + '</label><input id="su-co' + i + '" data-co="' + i + '" value="' + esc(x.name) + '"></div>' + (c.org.companies.length > 2 ? '<button type="button" class="btn small danger" data-delco="' + i + '" aria-label="Remove company ' + (i + 1) + '">Remove</button>' : "<span></span>") + "</div>"; }).join("") + '</div><div><button type="button" class="btn small" id="su-addco">Add a company</button></div>' : "") +
+        '<details id="su-loadbox"><summary>Try a sample, or load a setup you saved</summary><div style="display:grid;gap:10px"><div><button type="button" class="btn small" id="su-sample">Try a sample company</button></div><div class="field"><label for="su-load">Paste a saved setup</label><textarea id="su-load" class="code" spellcheck="false" placeholder="{ ... }"></textarea><span class="err" id="su-load-e" hidden></span></div><div><button type="button" class="btn small" id="su-loadbtn">Load this setup</button></div></div></details>';
+    } else if (step === 2) {
+      var hol = Object.keys(c.rules.holidays).sort();
+      h = '<h2 tabindex="-1">Working rules</h2><p>The portal counts late arrivals and half days by these rules. The example week uses a 10:00 AM to 7:00 PM shift, Monday to Saturday.</p>' +
+        '<div class="su-grid three"><div class="field"><label for="su-grace">Grace after the shift starts</label><select id="su-grace">' + [5, 10, 15, 20, 30].map(function (g) { return '<option value="' + g + '"' + (g === c.rules.grace ? " selected" : "") + ">" + g + " minutes</option>"; }).join("") + '</select></div>' +
+        '<div class="field"><label for="su-half">A half day is under</label><select id="su-half">' + [[240, "4 hours"], [270, "4 h 30 min"], [300, "5 hours"]].map(function (g) { return '<option value="' + g[0] + '"' + (g[0] === c.rules.halfMin ? " selected" : "") + ">" + g[1] + "</option>"; }).join("") + '</select></div>' +
+        '<div class="field"><label for="su-cur">Currency</label><input id="su-cur" value="' + esc(c.rules.currency) + '" maxlength="4" autocapitalize="characters"><span class="help">Letters only, like PKR, USD or AED</span></div></div>' +
+        '<div class="su-rows" id="su-hols"><b style="font-size:.875rem">Public holidays in 2026</b>' + hol.map(function (d) { var fixed = !!DEMO.hol[d]; return '<div class="su-row hol"><div class="field"><label for="su-hd-' + d + '">Date</label><input id="su-hd-' + d + '" type="date" value="' + d + '" disabled></div><div class="field"><label for="su-hn-' + d + '">Name</label><input id="su-hn-' + d + '" data-hol="' + d + '" value="' + esc(c.rules.holidays[d]) + '"></div>' + (fixed ? "<span></span>" : '<button type="button" class="btn small danger" data-delhol="' + d + '">Remove</button>') + "</div>"; }).join("") + "</div>" +
+        '<div class="su-row hol"><div class="field"><label for="su-nhd">Add a holiday: date</label><input id="su-nhd" type="date" min="2026-01-01" max="2026-12-31"></div><div class="field"><label for="su-nhn">Name</label><input id="su-nhn" placeholder="e.g. Founders’ day"></div><button type="button" class="btn small" id="su-addhol">Add</button></div>' +
+        '<p class="su-note">The two holidays above fall in the example week and month, so they stay. Rename them to your own.</p>';
+    } else if (step === 3) {
+      h = '<h2 tabindex="-1">Leave each year</h2><p>How many paid days each person gets. HR can change these later in Settings.</p><div class="su-grid three">' +
+        [["casual", "Casual leave"], ["annual", "Annual leave"], ["sick", "Sick leave"]].map(function (t) { return '<div class="field"><label for="su-ent-' + t[0] + '">' + t[1] + ', days</label><input id="su-ent-' + t[0] + '" inputmode="numeric" value="' + esc(c.rules.ent[t[0]]) + '"></div>'; }).join("") + "</div>";
+    } else if (step === 4) {
+      h = '<h2 tabindex="-1" id="su-people">Your people</h2><p>Add everyone who will be in the portal. You need one owner, at least one HR person and at least one employee. No ID numbers, bank details, phone numbers or addresses.</p>' +
+        '<div class="su-rows" id="su-plist">' + c.people.map(personCard).join("") + "</div>" +
+        '<div><button type="button" class="btn small" id="su-addp">Add a person</button> <span class="notes num" id="su-pcount">' + c.people.length + " people</span></div>" +
+        '<details id="su-csvbox"><summary>Paste a list instead (CSV)</summary><div class="field"><label for="su-csv">One person per line: name, code, job title, company, department, manager’s code, role, joining date, office or field</label><textarea id="su-csv" class="code" spellcheck="false" placeholder="Sara Ali, E-01, Founder, ' + esc((c.org.companies[0] || {}).name || "Company") + ', Leadership, , owner, 2020-01-01, office"></textarea><span class="help">Role is owner, hr, manager or employee. A first line that starts with “name” is skipped.</span><span class="err" id="su-csv-e" hidden></span></div><div><button type="button" class="btn small" id="su-csvadd">Add these people</button></div></details>';
+    } else if (step === 5) {
+      var emps = c.people.filter(function (p) { return p.role === "employee" || p.role === "manager"; });
+      if (!emps.some(function (p) { return p.code === c.focus; })) c.focus = (emps.filter(function (p) { return p.role === "employee"; })[0] || emps[0] || {}).code || "";
+      h = '<h2 tabindex="-1">The example employee</h2><p>The employee pages (My week, Targets, Attendance, Leave, payslips) show one person’s week, so you can see what an employee sees and how HR’s decisions reach them. Choose that person.</p>' +
+        '<div class="field" style="max-width:420px"><label for="su-focus">Show the employee side as</label><select id="su-focus">' + emps.map(function (p) { return '<option value="' + esc(p.code) + '"' + (p.code === c.focus ? " selected" : "") + ">" + esc(p.name) + ", " + esc(p.title) + "</option>"; }).join("") + "</select></div>" +
+        '<p class="su-note">Their targets, tasks, punches, leave and payslip are example activity with made-up figures. The HR side shows everyone you entered.</p>';
+    } else if (step === 6) {
+      h = '<h2 tabindex="-1">Modules</h2><p>Switch off what you don’t need. A module that is off is hidden from every menu.</p><div class="su-mods">' +
+        MODS.map(function (m) { return '<label class="check"><input type="checkbox" data-mod="' + m[0] + '"' + (c.modules[m[0]] ? " checked" : "") + "><span>" + m[1] + "<small>" + m[2] + "</small></span></label>"; }).join("") + "</div>" +
+        '<p class="su-note">Attendance, leave, targets, policies and the HR action queue are always on.</p>';
+    } else {
+      var by = function (r) { return c.people.filter(function (p) { return p.role === r; }).map(function (p) { return p.name; }); }, f = c.people.filter(function (p) { return p.code === c.focus; })[0] || {};
+      var mods = MODS.filter(function (m) { return c.modules[m[0]]; }).map(function (m) { return m[1]; });
+      h = '<h2 tabindex="-1">Review</h2><p>Check the answers, then create the portal. Use Back to change anything.</p><dl class="su-sum">' +
+        [["Organisation", esc(c.org.name) + (c.org.kind === "group" ? ", a group of " + c.org.companies.length + " companies" : ", one company")],
+          c.org.kind === "group" ? ["Companies", c.org.companies.map(function (x) { return esc(x.name); }).join(", ")] : null,
+          ["Late after", "10:" + ("0" + c.rules.grace).slice(-2) + " AM (" + c.rules.grace + " minutes grace)"], ["Half day under", (c.rules.halfMin / 60) + " hours"], ["Currency", esc(c.rules.currency)],
+          ["Leave each year", "Casual " + c.rules.ent.casual + ", annual " + c.rules.ent.annual + ", sick " + c.rules.ent.sick], ["Holidays", Object.keys(c.rules.holidays).sort().map(function (d) { return esc(c.rules.holidays[d]); }).join(", ")],
+          ["People", c.people.length + " in all"], ["Owner", esc(by("owner").join(", "))], ["HR", esc(by("hr").join(", "))], ["Example employee", esc(f.name || "")], ["Modules", mods.length ? mods.join(", ") : "Only the always-on pages"]
+        ].filter(Boolean).map(function (r) { return "<div><dt>" + r[0] + "</dt><dd>" + r[1] + "</dd></div>"; }).join("") + "</dl>" +
+        '<p class="su-note">The portal opens on an example week, Tue 10 Nov 2026, with example activity for your people, so every page has something to show. All figures are made up.</p>' +
+        '<details id="su-savebox"><summary>Save this setup to use on another computer</summary><div class="field"><label for="su-json">Copy this text and keep it. Paste it on step 1 to load it again.</label><textarea id="su-json" class="code" readonly spellcheck="false">' + esc(JSON.stringify(c)) + '</textarea></div><div><button type="button" class="btn small" id="su-copy">Copy my setup</button> <span class="notes" id="su-copied" role="status"></span></div></details>';
+    }
+    return (flash ? '<p class="su-ok" role="status">' + esc(flash) + "</p>" : "") + '<p class="su-err" id="su-err" role="alert" hidden></p>' + h;
+  }
+  function render(focusHead) {
+    $("#su-step-l").textContent = "Step " + step + " of " + STEPS.length + ": " + STEPS[step - 1];
+    $("#su-steps").innerHTML = STEPS.map(function (s, i) { return "<li" + (i + 1 === step ? ' aria-current="step"' : i + 1 < step ? ' class="done"' : "") + "><span>" + s + "</span></li>"; }).join("");
+    $("#su-body").innerHTML = body(); flash = "";
+    $("#su-back").hidden = step === 1; $("#su-cancel").hidden = !(editing && step === 1);
+    $("#su-next").textContent = step === STEPS.length ? (editing ? "Save and rebuild my portal" : "Create my portal") : "Next";
+    if (focusHead) { var h = $("#su-body h2"); if (h) h.focus(); if (window.scrollTo) try { window.scrollTo(0, 0); } catch (e) { /* jsdom */ } }
+  }
+  function collect() {
+    var c = D, v = function (s) { var n = $(s); return n ? n.value : null; };
+    if (step === 1) { c.org.name = clean(v("#su-org")); $$("#su-body [data-co]").forEach(function (n) { c.org.companies[Number(n.getAttribute("data-co"))].name = clean(n.value); }); if (c.org.kind === "single") { c.org.companies = [{ key: c.org.companies[0].key, name: c.org.name }]; c.people.forEach(function (p) { p.co = c.org.companies[0].key; }); } }
+    else if (step === 2) { c.rules.grace = Number(v("#su-grace")); c.rules.halfMin = Number(v("#su-half")); c.rules.currency = String(v("#su-cur")).toUpperCase().replace(/[^A-Z]/g, ""); $$("#su-body [data-hol]").forEach(function (n) { c.rules.holidays[n.getAttribute("data-hol")] = clean(n.value); }); }
+    else if (step === 3) ["casual", "annual", "sick"].forEach(function (t) { var raw = String(v("#su-ent-" + t)).trim(); c.rules.ent[t] = /^\d+$/.test(raw) ? Number(raw) : NaN; });
+    else if (step === 4) $$("#su-body [data-pi]").forEach(function (n) { var p = c.people[Number(n.getAttribute("data-pi"))], f = n.getAttribute("data-pf"); if (!p) return; p[f] = f === "code" ? cleanCode(n.value) : f === "name" || f === "title" ? clean(n.value) : f === "dept" ? clean(n.value, 40) : n.value; });
+    else if (step === 5) c.focus = v("#su-focus") || "";
+    else if (step === 6) $$("#su-body [data-mod]").forEach(function (n) { c.modules[n.getAttribute("data-mod")] = n.checked; });
+  }
+  function showErr(list) {
+    var mine = list.filter(function (x) { return x[0] === step; }); if (!mine.length) return false;
+    var box = $("#su-err"); box.hidden = false; box.textContent = mine.length === 1 ? mine[0][2] : mine[0][2] + " (and " + (mine.length - 1) + " more to fix)";
+    $$("#su-body [aria-invalid]").forEach(function (n) { n.removeAttribute("aria-invalid"); });
+    var t = $("#setup " + mine[0][1]); if (t) { if (/^(INPUT|SELECT|TEXTAREA)$/.test(t.nodeName)) t.setAttribute("aria-invalid", "true"); if (t.focus) { if (!/^(INPUT|SELECT|TEXTAREA|BUTTON)$/.test(t.nodeName)) t.setAttribute("tabindex", "-1"); t.focus(); } }
+    return true;
+  }
+  function parseCsv(text) {
+    var added = 0, bad = [];
+    text.split(/\r?\n/).forEach(function (line, n) {
+      if (!line.trim()) return;
+      var cells = line.split(",").map(function (x) { return x.trim().replace(/^"|"$/g, ""); });
+      if (n === 0 && /^name$/i.test(cells[0])) return;
+      if (!cells[0] || !cells[1]) { bad.push(n + 1); return; }
+      var co = D.org.companies.filter(function (x) { return x.name.toLowerCase() === String(cells[3] || "").toLowerCase(); })[0] || D.org.companies[0];
+      var role = String(cells[6] || "employee").toLowerCase();
+      D.people.push({ name: clean(cells[0]), code: cleanCode(cells[1]), title: clean(cells[2] || ""), co: co.key, dept: clean(cells[4] || "", 40), mgr: cleanCode(cells[5] || ""), role: ROLES[role] ? role : "employee", joining: /^\d{4}-\d{2}-\d{2}$/.test(cells[7] || "") ? cells[7] : "2025-01-01", work: /field/i.test(cells[8] || "") ? "field" : "office" });
+      added++;
+    });
+    return { added: added, bad: bad };
+  }
+  $("#su-form").addEventListener("submit", function (e) {
+    e.preventDefault(); collect();
+    if (showErr(problems(D, step))) return;
+    if (step < STEPS.length) { step++; render(true); return; }
+    var fin = valid(D);
+    if (!fin) { var all = problems(normalise(D) || D); step = all.length ? all[0][0] : 1; render(true); showErr(all); return; }
+    if (!write(SKEY, fin)) { var b = $("#su-err"); b.hidden = false; b.textContent = "This browser would not save the setup. Check that site data is allowed, then try again."; return; }
+    drop(DKEY); reload();
+  });
+  $("#su-back").addEventListener("click", function () { collect(); if (step > 1) { step--; render(true); } });
+  $("#su-cancel").addEventListener("click", function () { document.body.classList.remove("su-on"); $("#setup").hidden = true; });
+  $("#setup").addEventListener("change", function (e) {
+    var t = e.target;
+    if (t.name === "su-kind") { collect(); D.org.kind = t.value; if (t.value === "group" && D.org.companies.length < 2) { D.org.companies = [{ key: D.org.companies[0].key, name: "" }, { key: "c" + (++seqCo + 1), name: "" }]; } render(false); var r = $('#su-body [name="su-kind"][value="' + t.value + '"]'); if (r) r.focus(); }
+    if (t.getAttribute && t.getAttribute("data-pf") === "name") { var lg = t.closest(".su-person").querySelector("legend"); lg.textContent = t.value.trim() || "Person " + (Number(t.getAttribute("data-pi")) + 1); }
+  });
+  $("#setup").addEventListener("focusin", function (e) {
+    var t = e.target; if (t.getAttribute && t.getAttribute("data-pf") === "mgr") { collect(); var i = Number(t.getAttribute("data-pi")), keep = t.value; t.innerHTML = mgrOpts(i); t.value = keep; }
+  });
+  $("#setup").addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("button") : null; if (!t) return;
+    var a = function (n) { return t.getAttribute(n); };
+    if (t.id === "su-addco") { collect(); D.org.companies.push({ key: "c" + (++seqCo + 1), name: "" }); render(false); $("#su-co" + (D.org.companies.length - 1)).focus(); }
+    else if (a("data-delco") != null) { collect(); var gone = D.org.companies.splice(Number(a("data-delco")), 1)[0]; D.people.forEach(function (p) { if (p.co === gone.key) p.co = D.org.companies[0].key; }); render(false); $("#su-addco").focus(); }
+    else if (t.id === "su-sample") { D = JSON.parse(JSON.stringify(SAMPLE)); seqCo = D.org.companies.length; step = STEPS.length; flash = "Sample company loaded. Create the portal, or go Back to change it."; render(true); }
+    else if (t.id === "su-loadbtn") {
+      var err = $("#su-load-e"), got = null; try { got = JSON.parse($("#su-load").value); } catch (x) { got = null; }
+      var ok = got ? valid(got) : null;
+      if (!ok) { err.hidden = false; err.textContent = got ? "This setup is not complete: " + ((problems(normalise(got) || blank())[0] || [0, 0, "it is not a setup from this template."])[2]) : "This is not a saved setup. Paste the whole text you copied from the Review step."; $("#su-load").setAttribute("aria-invalid", "true"); $("#su-load").focus(); return; }
+      D = ok; seqCo = D.org.companies.length; step = STEPS.length; flash = "Setup loaded. Create the portal, or go Back to change it."; render(true);
+    }
+    else if (t.id === "su-addhol") {
+      collect(); var d = $("#su-nhd").value, n = clean($("#su-nhn").value), box = $("#su-err");
+      if (!/^2026-\d{2}-\d{2}$/.test(d)) { box.hidden = false; box.textContent = "Pick a date in 2026 for the holiday."; $("#su-nhd").focus(); return; }
+      if (!n) { box.hidden = false; box.textContent = "Give the holiday a name."; $("#su-nhn").focus(); return; }
+      if (D.rules.holidays[d]) { box.hidden = false; box.textContent = "That date is already " + D.rules.holidays[d] + "."; $("#su-nhd").focus(); return; }
+      D.rules.holidays[d] = n; render(false); $("#su-nhd").focus();
+    }
+    else if (a("data-delhol")) { collect(); delete D.rules.holidays[a("data-delhol")]; render(false); $("#su-nhd").focus(); }
+    else if (t.id === "su-addp") { collect(); D.people.push(newP()); render(false); $('#su-body [data-pi="' + (D.people.length - 1) + '"][data-pf="name"]').focus(); }
+    else if (a("data-delp") != null) { collect(); var out = D.people.splice(Number(a("data-delp")), 1)[0]; D.people.forEach(function (p) { if (p.mgr === out.code) p.mgr = ""; }); render(false); $("#su-addp").focus(); }
+    else if (t.id === "su-csvadd") {
+      collect(); var res = parseCsv($("#su-csv").value), ce = $("#su-csv-e");
+      if (!res.added) { ce.hidden = false; ce.textContent = res.bad.length ? "Line " + res.bad.join(", ") + " has no name or no code. Each line needs at least a name and a code." : "Paste at least one line first."; $("#su-csv").focus(); return; }
+      D.people = D.people.filter(function (p) { return p.name || p.code || p.title; });
+      flash = res.added + " " + (res.added === 1 ? "person" : "people") + " added." + (res.bad.length ? " Line " + res.bad.join(", ") + " was skipped: no name or no code." : ""); render(false); $("#su-people").focus();
+    }
+    else if (t.id === "su-copy") {
+      var ta = $("#su-json"), done = function (m) { $("#su-copied").textContent = m; };
+      try { window.navigator.clipboard.writeText(ta.value).then(function () { done("Copied."); }, function () { ta.focus(); ta.select(); done("Select all is on. Press Ctrl+C to copy."); }); } catch (x) { ta.focus(); ta.select(); done("Select all is on. Press Ctrl+C to copy."); }
+    }
+  });
+
+  /* ---------- Start ---------- */
+  var cfg = valid(read(SKEY));
+  if (!cfg && PREVIEW) { cfg = valid(SAMPLE); write(SKEY, cfg); }
+  window.TPLSetup = { key: SKEY, dataKey: DKEY, sample: SAMPLE, valid: valid, reload: reload, preview: PREVIEW };
+  if (cfg) { window.TPL = buildTPL(cfg); window.TPL.dom(); }
+  else open(null, false);
+})();
+</script>
